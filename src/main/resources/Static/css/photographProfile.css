@@ -1,0 +1,56 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+.f_size{
+    width: 350px;
+    height: 350px;
+    border: solid black;
+    border-radius: 170px;
+    border: 1px solid darkgrey;
+    box-shadow: 0 0 7px #666;
+}
+
+.m-50{
+    margin-top: 50px;
+}
+.m-30{
+    margin-top: 30px;
+}
+.t-l{
+    text-align: left;
+}
+.c_size{
+    width: 200px;
+    height: 200px;
+    border: solid red;
+}
+.f_l{
+    float: left;
+}
+.m-l{
+    margin-left: 80px;
+}
+.p{
+    padding: 30px;
+}
+.pole{
+    font-weight: bold;
+    font-family: "Segoe Script";
+    text-align: left;
+    color: black;
+    font-size: 20px;
+
+}
+.icon_s{
+    height: 20px;
+    width:50px ;
+}
+.mini_f{
+    display: inline;
+    margin-right: 10px;
+}
+body{
+    background: #bbc4ce;
+}
