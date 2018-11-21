@@ -14,4 +14,6 @@ public class Photo {
     @OneToMany
     private List<UserDepended> whoLiked = new ArrayList<>();
 
+    public Photo() {
+    }
 }
