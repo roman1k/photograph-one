@@ -12,13 +12,14 @@ public class Photograph  extends UserDepended{
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
     private UserDepended userDepended;
     private  String avatar;
-    private int Age;
+    private int age;
     private Sex sex;
+    @OneToOne(optional = false)
     private Contact contact;
     private int Sale;
     @OneToMany
     private List<Gallery> galleries = new ArrayList<>();
-    @OneToOne
+    @OneToOne(optional = false)
     private  Rating rating;
     private String description;
 
@@ -41,11 +42,11 @@ public class Photograph  extends UserDepended{
     }
 
     public int getAge() {
-        return Age;
+        return age;
     }
 
     public void setAge(int age) {
-        Age = age;
+        this.age = age;
     }
 
     public Sex getSex() {
@@ -105,7 +106,7 @@ public class Photograph  extends UserDepended{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Photograph that = (Photograph) o;
-        return Age == that.Age &&
+        return age == that.age &&
                 Sale == that.Sale &&
                 Objects.equals(userDepended, that.userDepended) &&
                 Objects.equals(avatar, that.avatar) &&
@@ -118,7 +119,7 @@ public class Photograph  extends UserDepended{
 
     @Override
     public int hashCode() {
-        return Objects.hash(userDepended, avatar, Age, sex, contact, Sale, galleries, rating, description);
+        return Objects.hash(userDepended, avatar, age, sex, contact, Sale, galleries, rating, description);
     }
 
 
@@ -129,7 +130,7 @@ public class Photograph  extends UserDepended{
     public Photograph(UserDepended userDepended, String avatar, int age, Sex sex, Contact contact, int sale, List<Gallery> galleries, Rating rating, String description) {
         this.userDepended = userDepended;
         this.avatar = avatar;
-        Age = age;
+        age = age;
         this.sex = sex;
         this.contact = contact;
         Sale = sale;
@@ -145,7 +146,7 @@ public class Photograph  extends UserDepended{
         return "Photograph{" +
                 "userDepended=" + userDepended +
                 ", avatar='" + avatar + '\'' +
-                ", Age=" + Age +
+                ", Age=" + age +
                 ", sex=" + sex +
                 ", contact=" + contact +
                 ", Sale=" + Sale +
