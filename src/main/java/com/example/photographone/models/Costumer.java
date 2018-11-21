@@ -11,6 +11,13 @@ public class Costumer extends UserDepended {
     private UserDepended userDepended;
     private  int count;
 
+    public Costumer() {
+    }
+
+    public Costumer(UserDepended userDepended) {
+        this.userDepended = userDepended;
+    }
+
     public int getCount() {
         return count;
     }

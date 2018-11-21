@@ -1,9 +1,8 @@
 package com.example.photographone.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Photograph  extends UserDepended{
@@ -11,5 +10,12 @@ public class Photograph  extends UserDepended{
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
     private UserDepended userDepended;
+    @OneToMany
+    private List<Gallery> galleries = new ArrayList<>();
+    @OneToOne
+    private  Rating rating;
+    private Sex sex;
+    private String description;
+    private  String avatar;
 
 }

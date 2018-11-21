@@ -12,7 +12,11 @@ public class Contact {
     private long number;
     private String facebook;
     private String instagram;
+    private  City city;
 
+
+    public Contact() {
+    }
 
     public Contact(String email) {
         this.email = email;
