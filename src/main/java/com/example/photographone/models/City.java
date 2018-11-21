@@ -13,7 +13,12 @@ public class City {
 //constructor
     public City() {
     }
-// getter and setter
+
+    public City(String nameCity) {
+        this.nameCity = nameCity;
+    }
+
+    // getter and setter
     public int getId() {
         return id;
     }

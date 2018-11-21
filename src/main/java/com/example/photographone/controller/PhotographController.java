@@ -11,7 +11,7 @@ public class PhotographController {
     public String savefirstphotograph(
 
     ){
-
+return "index";
     }
 
 

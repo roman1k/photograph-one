@@ -31,7 +31,7 @@
         <input type="submit" value="Переглянути всі міста">
         <ul>
             <li th:each="cities : ${cities}">
-                <p th:text="${cities}"> </p>
+                <h2 th:text="${cities.getNameCity()}"> </h2>
             </li>
         </ul>
     </form>
