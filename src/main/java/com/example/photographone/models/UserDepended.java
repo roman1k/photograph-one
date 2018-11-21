@@ -12,9 +12,11 @@ public  class UserDepended {
     private String lastName;
     @OneToOne(optional = false)
     private Contact contact;
+
+    //constructor
     public UserDepended() {
     }
-
+    //getter and setter
     public String getFirstName() {
         return firstName;
     }
@@ -37,6 +39,14 @@ public  class UserDepended {
 
     public void setContact(Contact contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDepended{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }
 
