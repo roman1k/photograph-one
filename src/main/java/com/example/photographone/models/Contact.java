@@ -14,6 +14,9 @@ public class Contact {
     private String instagram;
 
 
+    public Contact() {
+    }
+
     public Contact(String email) {
         this.email = email;
     }
