@@ -11,6 +11,7 @@ public class Costumer extends UserDepended {
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
     private UserDepended userDepended;
+    @OneToMany
     private List<UserDepended> selected = new ArrayList<>();
 
     //constructor
