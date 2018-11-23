@@ -17,6 +17,11 @@ public  class UserDepended {
     public UserDepended() {
     }
     //getter and setter
+
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
