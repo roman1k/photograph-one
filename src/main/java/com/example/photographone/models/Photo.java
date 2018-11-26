@@ -10,8 +10,6 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-
-
     private int countOfLke;
     private String hashtag;
     @OneToMany

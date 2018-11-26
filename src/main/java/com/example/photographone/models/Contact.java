@@ -23,6 +23,15 @@ public class Contact {
         this.email = email;
     }
     //getter and setter
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
+    }
+
     public String getEmail() {
         return email;
     }
