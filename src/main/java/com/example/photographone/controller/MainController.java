@@ -44,7 +44,6 @@ public class MainController {
 
     @PostMapping("/successURL")
     private  String saveUser( ) {
-
         return "next";
     }
 }
