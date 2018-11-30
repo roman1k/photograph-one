@@ -30,7 +30,7 @@ public class PhotographController {
    private PhotographService photographService;
 
     @PostMapping("/saveFirstPhotographer")
-    public String savefirstphotograph(
+    public String saveFirstPhotographer(
             @RequestParam MultipartFile avatar,
             @RequestParam String firstName,
             @RequestParam String lastName,
@@ -54,14 +54,7 @@ public class PhotographController {
                 instagram, city, Sale, nameGallery, photos, photograph);
 
         photographService.save(photograph1);
-        Photograph photograp;
-        return "index";
+
+        return "saveFirstPhotographer";
     }
-
-
-
-
-
-
-
 }
