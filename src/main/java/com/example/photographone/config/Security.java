@@ -27,8 +27,8 @@ public class Security  extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/","/saveUser").permitAll()
-                .anyRequest().authenticated()//на всі інші тільки аутентифіковані
-                .antMatchers("/admin/**").hasRole("ADMIN")//тільки адмін на такі
+                .antMatchers("/admin/**", "/admin").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
