@@ -5,6 +5,7 @@ import com.example.photographone.DAO.CostumerDAO;
 import com.example.photographone.DAO.UserDAO;
 import com.example.photographone.models.Contact;
 import com.example.photographone.models.Costumer;
+import com.example.photographone.models.Role;
 import com.example.photographone.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,6 +37,7 @@ public class MainController {
         String encode = passwordEncoder.encode(user.getPassword());
         user.setPassword(encode);
         System.out.println("2________________________________");
+        user.setRole(Role.ROLE_COSTUMER);
         userDAO.save(user);
 
         model.addAttribute("user", user);
@@ -44,7 +46,7 @@ public class MainController {
 
     @PostMapping("/successURL")
     private  String saveUser( ) {
-
+        System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
         return "next";
     }
 }

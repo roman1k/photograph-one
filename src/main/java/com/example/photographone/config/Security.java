@@ -22,7 +22,6 @@ public class Security  extends WebSecurityConfigurerAdapter {
 
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -34,7 +33,7 @@ public class Security  extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .successForwardUrl("/successURL")
-                .failureUrl("/login?error").permitAll()
+                .failureUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout()
