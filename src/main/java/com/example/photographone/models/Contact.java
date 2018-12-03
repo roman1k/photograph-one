@@ -12,12 +12,24 @@ public class Contact {
     private long number;
     private String facebook;
     private String instagram;
+    @ManyToOne
+    private  City city;
 
+    //constuctors
     public Contact() {
     }
 
     public Contact(String email) {
         this.email = email;
+    }
+    //getter and setter
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(City city) {
+        this.city = city;
     }
 
     public String getEmail() {
