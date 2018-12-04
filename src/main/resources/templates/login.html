@@ -6,7 +6,13 @@
 </head>
 <body>
 <hr>
-[[${user}]]
+<H1>Реєстрація </H1>
+<form th:action="@{/saveUser}" method="post">
+    <input type="" name="username" placeholder="">
+    <input type="password" name="password" placeholder="">
+    <input
+    <input type = "submit" value="go!">
+</form>
 <form th:action="@{/login}" method="post">
     <input type="" name="username" placeholder="">
     <input type="password" name="password" placeholder="">
