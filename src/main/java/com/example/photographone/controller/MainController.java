@@ -7,6 +7,7 @@ import com.example.photographone.models.Contact;
 import com.example.photographone.models.Costumer;
 import com.example.photographone.models.Role;
 import com.example.photographone.models.User;
+import com.example.photographone.service.implem.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,10 @@ import java.net.URLEncoder;
 public class MainController {
     @Autowired
     private UserDAO userDAO;
+
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private UserServiceImpl userService;
+
     @Autowired
     private CostumerDAO costumerDAO;
     @Autowired
@@ -28,18 +31,7 @@ public class MainController {
 
     @PostMapping("/saveUser")
     public String save(User user, Model model){
-        Contact contact = new Contact("123");
-        contactDAO.save(contact);
-        Costumer costumer = new Costumer();
-        costumer.setContact(contact);
-        costumerDAO.save(costumer);
-        user.setUserDep(costumer);
-        String encode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
-        System.out.println("2________________________________");
-        user.setRole(Role.ROLE_COSTUMER);
-        userDAO.save(user);
-
+        userService.save(user);
         model.addAttribute("user", user);
     return  "login";
     }
