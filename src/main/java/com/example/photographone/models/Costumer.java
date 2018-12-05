@@ -1,6 +1,8 @@
 package com.example.photographone.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Costumer")
@@ -9,18 +11,13 @@ public class Costumer extends UserDepended {
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
     private UserDepended userDepended;
-    private  int count;
-    private Role role = Role.ROLE_COSTUMER;
+    @OneToMany
+    private List<UserDepended> selected = new ArrayList<>();
 
+    //constructor
     public Costumer() {
     }
-
-    public Costumer(UserDepended userDepended, int count, Role role) {
-        this.userDepended = userDepended;
-        this.count = count;
-        this.role = role;
-    }
-
+    //getter and setter
     public UserDepended getUserDepended() {
         return userDepended;
     }
@@ -29,19 +26,18 @@ public class Costumer extends UserDepended {
         this.userDepended = userDepended;
     }
 
-    public int getCount() {
-        return count;
+    public List<UserDepended> getSelected() {
+        return selected;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setSelected(List<UserDepended> selected) {
+        this.selected = selected;
     }
 
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
+    @Override
+    public String toString() {
+        return "Costumer{" +
+                "name" + getFirstName()+
+                '}';
     }
 }
