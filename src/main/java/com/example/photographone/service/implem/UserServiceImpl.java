@@ -1,14 +1,8 @@
 package com.example.photographone.service.implem;
 
 
-import com.example.photographone.DAO.ContactDAO;
-import com.example.photographone.DAO.CostumerDAO;
-import com.example.photographone.DAO.PhotographDAO;
-import com.example.photographone.DAO.UserDAO;
-import com.example.photographone.models.Contact;
-import com.example.photographone.models.Costumer;
-import com.example.photographone.models.Role;
-import com.example.photographone.models.User;
+import com.example.photographone.DAO.*;
+import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.security.core.userdetails.UserDetails;
@@ -23,10 +17,13 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDAO;
 
     @Autowired
+    private RatingDAO ratingDAO;
+
+    @Autowired
     private ContactDAO contactDAO;
 
     @Autowired
-    private  PhotographDAO photographDAO;
+    private PhotographDAO photographDAO;
 
     @Autowired
     private CostumerDAO costumerDAO;
@@ -40,8 +37,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(User user) {
-        Contact contact = new Contact("123");
+    public void savePhotograph(User user, Contact contact) {
+        contactDAO.save(contact);
+        Photograph photograph = new Photograph();
+        photograph.setContact(contact);
+        Rating rating = new Rating();
+        ratingDAO.save(rating);
+        photograph.setRating(rating);
+        photographDAO.save(photograph);
+        user.setUserDep(photograph);
+        String encode = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encode);
+        System.out.println("2________________________________");
+        user.setRole(Role.ROLE_PHOTOGRAPH);
+        userDAO.save(user);
+    }
+
+    @Override
+    public void saveUser(User user, Contact contact) {
         contactDAO.save(contact);
         Costumer costumer = new Costumer();
         costumer.setContact(contact);
@@ -52,7 +65,5 @@ public class UserServiceImpl implements UserService {
         System.out.println("2________________________________");
         user.setRole(Role.ROLE_COSTUMER);
         userDAO.save(user);
-
-
     }
 }
