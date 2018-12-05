@@ -1,11 +1,162 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Фотографи України</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../../../../../photograph-on/src/main/resources/Static/css/photographProfile.css">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<hr>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Внесіть свої дані</h4>
+            </div>
+            <form action="#">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Логін</label>
+                        <input type="text" class="form-control" placeholder="enter your login">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="text" class="form-control" placeholder="enter your password">
+                    </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Увійти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container, col-md-12" style="width: 100%">
+    <div class="row">
+        <div >
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" style="background: grey" ><img src="../static/images/logo-inverse-5.png"></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="pole"><a href="#">Чат</a></li>
+                            <li class="pole"><a href="#">Галереї</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle, pole" data-toggle="dropdown">Топ <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Топ фотографів</a></li>
+                                    <li><a href="#">Топ фотографій</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" style="margin-right: 60px">
+                            <button type="button" class="btn btn-default btn-lg, pole" style="margin-right: 20px" data-toggle="modal" data-target=".bs-example-modal-sm">Увійти</button>
+                            <button type="button" class="btn btn-default btn-lg, pole">Зареєструватися</button>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+</div>
+<div class="container-fluid  p">
+    <div class="row">
+        <div id="carousel-example-generic" class="carousel slide, m-50" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="../static/images/ChaseStacey(pp_w1200_h571).png" class="w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="gt">Всі моменти нашого життя неповторні</h1>
+                        ...
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="../static/images/08.jpg" class="w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="gt">Фотографія - це здатність побачити живі емоції, красу і унікальність кожної людини</h1>
+                        ...
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="../static/images/07.jpg" class="w-100" alt="...">
+                    <div class="carousel-caption">
+                        <h1 class="gt">Фотографи ловлять невловиме, фіксують наші миті, матеріалізовують спогади</h1>
+                        ...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+    </div>
+    <div class="container services-wrap" style="text-align: center" >
+        <div class="row, m-50">
+            <h3 class="gt">Топ найбільших міст України з пошуку фоторгафів</h3>
+            <p>Знайти фотографа у вашому місті ви також можете в меню сайту.</p>
+        </div>
+        <div class="row">
+            <div class="w">Київ</div>
+            <div class="w">Одеса</div>
+            <div class="w">Львів</div>
+            <div class="w">Харків</div>
+            <div class=" services"><a href=""><img src="../static/images/05_kiev.jpg"></a></div>
+            <div class=" services"><a href=""><img src="../static/images/h_ru_den_odessa_ua.jpg"></a></div>
+            <div class=" services"><a href=""><img src="../static/images/20693881_images_2130234493.jpg"></a></div>
+            <div class=" services"><a href=""><img src="../static/images/1416694.jpg"></a></div>
+
+        </div>
+        <div class="container-fluid, footer">
+            <p>Правила сайту</p>
+            <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Facebook.png" height="40px" , width="100px"></button>
+            <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Instagram_icon.png" height="40px" , width="50px"></button></p>
+
+        </div>
+    </div>
+</div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
