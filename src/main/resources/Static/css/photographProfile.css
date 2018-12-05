@@ -3,6 +3,7 @@
     padding: 0px;
     border: 0px;
     }
+
 .f_size{
     width: 350px;
     height: 350px;
@@ -60,6 +61,7 @@
     text-shadow: 2px 2px 3px black, 0 0 1em black;
     font-family: "Segoe Print";
     color: antiquewhite;
+    text-align: center;
 }
 .services img{
     display: block;
@@ -71,7 +73,8 @@
     height: 300px;
     float: left;
     padding: 10px;
-    margin-right: 25px;
+    margin-right: 13px;
+    margin-left: 13px;
 }
 .services-wrap{
     width: 100%;
@@ -89,11 +92,27 @@
 .footer{
     padding-top: 20px;
     padding-bottom: 20px;
-    background: #9c8e8e;
+    background: red;
     color: black;
     font-size: 30px;
     font-family: "Segoe Print";
-    background: linear-gradient(to bottom, #666666, white);
+    background: linear-gradient(to bottom, #b8b6b6, white);
     margin-top: 30px;
+    text-align: center;
+
+}
+.t_c{
+    text-align: center;
+
+}
+.showcase{
+   background-color: rgba(13, 17, 27, 0.8);
+    padding: 40px;
+    color: white;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+    width: 50%;
+    font-family: "Segoe Script";
 
 }

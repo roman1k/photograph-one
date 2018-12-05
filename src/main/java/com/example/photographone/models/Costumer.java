@@ -10,6 +10,24 @@ public class Costumer extends UserDepended {
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
     private UserDepended userDepended;
     private  int count;
+    private Role role = Role.ROLE_COSTUMER;
+
+    public Costumer() {
+    }
+
+    public Costumer(UserDepended userDepended, int count, Role role) {
+        this.userDepended = userDepended;
+        this.count = count;
+        this.role = role;
+    }
+
+    public UserDepended getUserDepended() {
+        return userDepended;
+    }
+
+    public void setUserDepended(UserDepended userDepended) {
+        this.userDepended = userDepended;
+    }
 
     public int getCount() {
         return count;
@@ -19,11 +37,11 @@ public class Costumer extends UserDepended {
         this.count = count;
     }
 
-    @Override
-    public String toString() {
-        return "Costumer{" +
-                "id=" +
-                ", count=" + count +
-                '}';
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
