@@ -11,9 +11,6 @@ public class Photograph  extends UserDepended{
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
     private UserDepended userDepended;
     private Role role = Role.ROLE_PHOTOGRAPH;
-    @OneToMany
-    private List<Gallery> galleries = new ArrayList<>();
-    @OneToOne
     private  Rating rating;
     private Sex sex;
     private String description;
@@ -25,7 +22,7 @@ public class Photograph  extends UserDepended{
     public Photograph(UserDepended userDepended, Role role, List<Gallery> galleries, Rating rating, Sex sex, String description, String avatar) {
         this.userDepended = userDepended;
         this.role = role;
-        this.galleries = galleries;
+
         this.rating = rating;
         this.sex = sex;
         this.description = description;

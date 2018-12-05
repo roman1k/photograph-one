@@ -27,7 +27,7 @@ public class Security  extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/saveUser").permitAll()
+                .antMatchers("/","/saveUser", "/main").permitAll()
                 .anyRequest().authenticated()//на всі інші тільки аутентифіковані
                 .antMatchers("/admin/**").hasRole("ADMIN")//тільки адмін на такі
                 .and()
