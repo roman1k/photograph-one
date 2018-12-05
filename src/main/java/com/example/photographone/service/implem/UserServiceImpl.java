@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
         System.out.println("2________________________________");
         user.setRole(Role.ROLE_COSTUMER);
         userDAO.save(user);
-        userDAO.save(user);
+
 
     }
 }
