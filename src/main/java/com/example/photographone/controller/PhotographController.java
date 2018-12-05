@@ -35,11 +35,6 @@ public class PhotographController {
         return  "saveFirstPhotographer";
     }
 
-
-
-
-
-
     @PostMapping("/saveFirstPhotographer")
     public String saveFirstPhotographer(
             @RequestParam MultipartFile avatar,
@@ -67,7 +62,6 @@ public class PhotographController {
                 instagram, city, Sale, nameGallery, photos, photograph));
 
         System.out.println("3");
-
 
         return "next";
     }

@@ -29,15 +29,14 @@ public class PhotographServiceImpl implements PhotographService {
                              String email, long number, String facebook,
                              String instagram, String city,int Sale,
                              String nameGallery, String photos,  Photograph photograph){
-        UserDepended userDepended = new UserDepended();
-        userDepended.setFirstName(firstName);
-        userDepended.setLastName(lastName);
+        photograph.getUserDepended().setFirstName(firstName);
+        photograph.getUserDepended().setLastName(lastName);
         City city1 = new City();
         city1.setNameCity(city);
         Contact contact = new Contact(email,number, facebook, instagram, city1);
         contactDAO.save(contact);
+        photograph.getUserDepended().setContact(contact);
         photograph.setAge(Age);
-        photograph.setContact(contact);
         photograph.setDescription(description);
         photograph.setSale(Sale);
         photograph.setAvatar(avatar);
