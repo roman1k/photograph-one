@@ -25,7 +25,10 @@ public class MainController {
     private CostumerDAO costumerDAO;
     @Autowired
     private ContactDAO contactDAO;
-
+    @PostMapping("/1")
+    public String q(){
+        return  "saveFirstPhotographer";
+    }
     @PostMapping("/saveUser")
     public String save(User user, Model model){
         Contact contact = new Contact("123");

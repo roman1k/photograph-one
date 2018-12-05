@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,6 +29,16 @@ public class PhotographController {
    private UserDAO userDAO;
     @Qualifier("photographServiceImpl")
    private PhotographService photographService;
+
+    @PostMapping("/1")
+    public String q(){
+        return  "saveFirstPhotographer";
+    }
+
+
+
+
+
 
     @PostMapping("/saveFirstPhotographer")
     public String saveFirstPhotographer(
@@ -45,16 +56,19 @@ public class PhotographController {
             @RequestParam int Sale,
             @RequestParam String nameGallery,
             @RequestParam String photos,
-            @AuthenticationPrincipal UserDepended userDepended
+            @AuthenticationPrincipal User user
             ) {
-        int id_photograph = userDepended.getId();
-        Photograph photograph = photographDAO.getOne(id_photograph);
-        Photograph photograph1 = photographService.getPhotograph(avatar.getOriginalFilename(),
+        System.out.println("1");
+
+        Photograph photograph =(Photograph)user.getUserDep();
+        System.out.println("2");
+         user.setUserDep(photographService.getPhotograph(avatar.getOriginalFilename(),
                 firstName, lastName, Age, sex, description, email, number, facebook,
-                instagram, city, Sale, nameGallery, photos, photograph);
+                instagram, city, Sale, nameGallery, photos, photograph));
 
-        photographService.save(photograph1);
+        System.out.println("3");
 
-        return "saveFirstPhotographer";
+
+        return "next";
     }
 }
