@@ -31,16 +31,8 @@
         <input type="submit" value="Переглянути всі міста">
         <ul>
             <li th:each="cities : ${cities}">
-                <p th:text="${cities}"> </p>
+                <h2 th:text="${cities.getNameCity()}"> </h2>
             </li>
         </ul>
     </form>
 </div>
-<div>
-    <form action="/saveCity">
-        <input  name="nameCity" placeholder="Введіть нове місто">
-        <input  type="submit" value="Добавити">
-    </form>
-</div>
-</body>
-</html>

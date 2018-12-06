@@ -10,10 +10,15 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nameCity;
-//constructor
+    //constructor
     public City() {
     }
-// getter and setter
+
+    public City(String nameCity) {
+        this.nameCity = nameCity;
+    }
+
+    // getter and setter
     public int getId() {
         return id;
     }

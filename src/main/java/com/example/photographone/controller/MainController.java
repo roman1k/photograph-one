@@ -5,7 +5,10 @@ import com.example.photographone.DAO.CostumerDAO;
 import com.example.photographone.DAO.UserDAO;
 import com.example.photographone.models.Contact;
 import com.example.photographone.models.Costumer;
+import com.example.photographone.models.Role;
 import com.example.photographone.models.User;
+import com.example.photographone.service.UserService;
+import com.example.photographone.service.implem.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -18,39 +21,29 @@ import java.net.URLEncoder;
 @Controller
 public class MainController {
     @Autowired
-    private UserDAO userDAO;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    @Autowired
-    private CostumerDAO costumerDAO;
-    @Autowired
-    private ContactDAO contactDAO;
+    private UserService userService;
 
-    @PostMapping("/saveUser")
-    public String save(User user, Model model){
-        Contact contact = new Contact("123");
-        contactDAO.save(contact);
-        Costumer costumer = new Costumer();
-        costumer.setContact(contact);
-        costumerDAO.save(costumer);
-        user.setUserDep(costumer);
-        String encode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
-        System.out.println("2________________________________");
-        userDAO.save(user);
 
-        model.addAttribute("user", user);
-    return  "login";
+
+    @GetMapping("/newPhotograph")
+    public String newPhotograph(User user, Contact contact){
+        userService.savePhotograph(user,contact);
+        return "redirect:/";
+    }
+
+    @GetMapping("/newUser")
+    public String newUser(User user, Contact contact){
+        userService.saveUser(user,contact);
+        return "redirect:/";
     }
 
     @PostMapping("/successURL")
-    private  String saveUser( ) {
-
-        return "next";
+    private  String saveUser() {
+        System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
+        return "redirect:/photographProfile";
     }
-    @GetMapping ("/main")
-    public String main (User user){
-        return "main";
 
-    }
+
+
+
 }
