@@ -38,19 +38,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void savePhotograph(User user, Contact contact) {
-        contactDAO.save(contact);
-        Photograph photograph = new Photograph();
-        photograph.setContact(contact);
-        Rating rating = new Rating();
-        ratingDAO.save(rating);
-        photograph.setRating(rating);
-        photographDAO.save(photograph);
-        user.setUserDep(photograph);
-        String encode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
-        System.out.println("2________________________________");
-        user.setRole(Role.ROLE_PHOTOGRAPH);
-        userDAO.save(user);
+        if(userDAO.findByUsername(user.getUsername())==null){
+            contactDAO.save(contact);
+            Photograph photograph = new Photograph();
+            photograph.setContact(contact);
+            Rating rating = new Rating();
+            ratingDAO.save(rating);
+            photograph.setRating(rating);
+            photographDAO.save(photograph);
+            user.setUserDep(photograph);
+            String encode = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encode);
+            System.out.println("2________________________________");
+            user.setRole(Role.ROLE_PHOTOGRAPH);
+            userDAO.save(user);
+        }
+        else System.out.println("____________________________________________");
+
     }
 
     @Override
