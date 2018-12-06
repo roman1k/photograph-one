@@ -20,7 +20,6 @@ public class PhotographServiceImpl implements PhotographService {
     @Override
     public void save(Photograph photograph) {
         photographDAO.save(photograph);
-
     }
 
     @Override
@@ -49,6 +48,4 @@ public class PhotographServiceImpl implements PhotographService {
         photograph.setAge(Age);
         return photograph;
     }
-
-
 }

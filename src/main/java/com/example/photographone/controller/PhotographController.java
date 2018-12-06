@@ -30,10 +30,6 @@ public class PhotographController {
     @Qualifier("photographServiceImpl")
    private PhotographService photographService;
 
-    @PostMapping("/1")
-    public String q(){
-        return  "saveFirstPhotographer";
-    }
 
     @PostMapping("/saveFirstPhotographer")
     public String saveFirstPhotographer(
@@ -57,7 +53,7 @@ public class PhotographController {
 
         Photograph photograph =(Photograph)user.getUserDep();
         System.out.println("2");
-         user.setUserDep(photographService.getPhotograph(avatar.getOriginalFilename(),
+        user.setUserDep(photographService.getPhotograph(avatar.getOriginalFilename(),
                 firstName, lastName, Age, sex, description, email, number, facebook,
                 instagram, city, Sale, nameGallery, photos, photograph));
 
