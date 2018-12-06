@@ -21,22 +21,21 @@ import java.net.URLEncoder;
 @Controller
 public class MainController {
     @Autowired
-    private UserDAO userDAO;
-
-    @Autowired
     private UserService userService;
 
-    @Autowired
-    private CostumerDAO costumerDAO;
-    @Autowired
-    private ContactDAO contactDAO;
+
 
     @GetMapping("/newPhotograph")
     public String newPhotograph(User user, Contact contact){
         userService.savePhotograph(user,contact);
-        return "index";
+        return "";
     }
 
+    @GetMapping("/newUser")
+    public String newUser(User user, Contact contact){
+        userService.saveUser(user,contact);
+        return "index";
+    }
 
     @PostMapping("/successURL")
     private  String saveUser( ) {

@@ -45,8 +45,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <input type = "submit" value="go!">
-                    <button type="button" class="btn btn-primary">Зареєструватися</button>
+                    <input type = "submit" class="btn btn-primary" value="Зареєструватися">
                 </div>
             </form>
         </div>
@@ -59,7 +58,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Внесіть свої дані</h4>
             </div>
-            <form th:action="@{/newPhotograph}">
+            <form th:action="@{/newUser}">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Логін</label>
@@ -73,11 +72,9 @@
                         <label>Електронна пошта</label>
                         <input type="email" class="form-control" name="mail" placeholder="enter your email">
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary"> Зареєструватися </button>
+                    <input type = "submit" class="btn btn-primary" value="Зареєструватися">
                 </div>
             </form>
         </div>

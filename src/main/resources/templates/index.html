@@ -27,20 +27,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Внесіть свої дані</h4>
             </div>
-            <form action="#">
+            <form th:action="@{/login}" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Логін</label>
-                        <input type="text" class="form-control" placeholder="enter your login">
+                        <input type="text" class="form-control" name="username" placeholder="enter your login">
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
-                        <input type="text" class="form-control" placeholder="enter your password">
+                        <input type="password" class="form-control" name="password" placeholder="enter your password">
                     </div>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Увійти</button>
+                    <input type = "submit" class="btn btn-primary" value="Увійти">
                 </div>
             </form>
         </div>
