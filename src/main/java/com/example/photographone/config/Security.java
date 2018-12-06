@@ -22,11 +22,12 @@ public class Security  extends WebSecurityConfigurerAdapter {
 
 
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/saveUser", "/choice/", "/images/**", "/css/**", "/registration", "/newPhotograph","/newUser")
+                .antMatchers("/","/saveUser","/saveFirstPhotographer", "/choice/", "/images/**", "/css/**", "/1","/registration","/newPhotograph","/newUser")
                 .permitAll()
                 .antMatchers("/admin/**", "/admin").hasRole("ADMIN")
                 .anyRequest().authenticated()

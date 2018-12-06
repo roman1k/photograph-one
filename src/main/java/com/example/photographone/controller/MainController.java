@@ -40,10 +40,15 @@ public class MainController {
     @PostMapping("/successURL")
     private  String saveUser() {
         System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
+       // return "redirect:/photographProfile";
         return "redirect:/photographProfile";
     }
 
-
+  /*  @GetMapping("/1")
+    public  String s1(){
+        return "redirect:/saveFirstPhotographer";
+    }
+*/
 
 
 }

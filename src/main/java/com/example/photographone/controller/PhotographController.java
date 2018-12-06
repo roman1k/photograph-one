@@ -31,7 +31,9 @@ public class PhotographController {
    private PhotographService photographService;
 
 
-    @PostMapping("/saveFirstPhotographer")
+
+
+    @GetMapping("/saveFirstPhotographer")
     public String saveFirstPhotographer(
             @RequestParam MultipartFile avatar,
             @RequestParam String firstName,
@@ -49,15 +51,15 @@ public class PhotographController {
             @RequestParam String photos,
             @AuthenticationPrincipal User user
             ) {
-        System.out.println("1");
+        System.out.println("1________________________________");
 
         Photograph photograph =(Photograph)user.getUserDep();
-        System.out.println("2");
+        System.out.println("2___________________________");
         user.setUserDep(photographService.getPhotograph(avatar.getOriginalFilename(),
                 firstName, lastName, Age, sex, description, email, number, facebook,
                 instagram, city, Sale, nameGallery, photos, photograph));
 
-        System.out.println("3");
+        System.out.println("3_________________________");
 
         return "next";
     }
