@@ -1,5 +1,7 @@
 package com.example.photographone.models;
 
+import com.example.photographone.models.Contact;
+
 import javax.persistence.*;
 
 @Entity
@@ -54,4 +56,3 @@ public  class UserDepended {
                 '}';
     }
 }
-

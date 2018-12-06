@@ -1,0 +1,227 @@
+body{
+    overflow:hidden;
+    overflow-y:hidden;  /*для вертикального*/
+    overflow-x:hidden;  /*для горизонтального*/
+
+
+}
+#left {
+    position: absolute; left: 0; top: 0; width: 50%;height: 100%;
+    opacity: 1;
+    -moz-transition: all 0.4s ease-out;  /* FF4+ */
+    -o-transition: all 0.4s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.4s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.4s ease-out;  /* IE10? */
+    transition: all 0.4s ease-out;
+    background: url("../images/photograph.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+
+}
+#left:hover{
+
+    -webkit-transform: scale(1.1,1.1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 550ms;
+    -moz-transform: scale(1.1,1.1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 550ms;
+    opacity: 1;
+    -moz-transition: all 0.4s ease-out;  /* FF4+ */
+    -o-transition: all 0.4s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.4s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.4s ease-out;  /* IE10? */
+    transition: all 0.4s ease-out;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+
+
+    animation-duration: 2s;
+
+
+}
+#right {
+    position: absolute; right: 0; top: 0; width: 50%;height: 100%;
+    opacity: 1;
+    -moz-transition: all 0.4s ease-out;  /* FF4+ */
+    -o-transition: all 0.4s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.4s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.4s ease-out;  /* IE10? */
+    transition: all 0.4s ease-out;
+    background: url("../images/user.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+    overflow: hidden;
+}
+
+#right:hover{
+    -webkit-transform: scale(1.1,1.1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 550ms;
+    -moz-transform: scale(1.1,1.1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 550ms;
+    opacity: 1;
+    -moz-transition: all 0.4s ease-out;  /* FF4+ */
+    -o-transition: all 0.4s ease-out;  /* Opera 10.5+ */
+    -webkit-transition: all 0.4s ease-out;  /* Saf3.2+, Chrome */
+    -ms-transition: all 0.4s ease-out;  /* IE10? */
+    transition: all 0.4s ease-out;
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+
+
+    animation-duration: 2s;
+
+
+}
+
+
+
+/*--- Button User -------*/
+*, *:after, *:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.container{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    height: 100vh;
+}
+button{
+    display: inline-block;
+    position: relative;
+    background: none;
+    border: none;
+    color: #f9e4ed;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 20px 30px;
+    background: rgba(0,0,0,0.09);
+}
+span{
+    display: block;
+    padding: 25px 80px;
+}
+button::before, button::after{
+    content:"";
+    width: 0;
+    height: 2px;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #fff;
+}
+
+span::before, span::after{
+    content:"";
+    width:2px;
+    height:0;
+    position: absolute;
+    transition: all 0.2s linear;
+    background: #fff;
+}
+button:hover::before, button:hover::after{
+
+    width: 100%;
+}
+button:hover span::before, button:hover span::after{
+    height: 100%;
+}
+
+#saveUser::before, #saveUser::after{
+    transition-delay: 0s;
+}
+#saveUser span::before, #saveUser span::after{
+    transition-delay: 0.2s;
+}
+#saveUser::before{
+    right: 0;
+    top: 0;
+}
+#saveUser::after{
+    left: 0;
+    bottom: 0;
+}
+#saveUser span::before{
+    left: 0;
+    top: 0;
+}
+#saveUser span::after{
+    right: 0;
+    bottom: 0;
+}
+#saveUser:hover::before, #saveUser:hover::after{
+
+    transition-delay: 0.2s;
+}
+#saveUser:hover span::before, #saveUser:hover span::after{
+    transition-delay: 0s;
+}
+
+
+
+/*--- Button Photographer -------*/
+
+
+#savePhotograph::before, #savePhotograph::after{
+    transition-delay: 0s;
+}
+#savePhotograph span::before, #savePhotograph span::after{
+    transition-delay: 0.2s;
+}
+#savePhotograph::before{
+    right: 0;
+    top: 0;
+}
+#savePhotograph::after{
+    left: 0;
+    bottom: 0;
+}
+#savePhotograph span::before{
+    left: 0;
+    top: 0;
+}
+#savePhotograph span::after{
+    right: 0;
+    bottom: 0;
+}
+#savePhotograph:hover::before, #savePhotograph:hover::after{
+
+    transition-delay: 0.2s;
+}
+#savePhotograph:hover span::before, #savePhotograph:hover span::after{
+    transition-delay: 0s;
+}
+
+#savePhotograph,#saveUser{
+
+    outline: none;
+    margin: auto;
+    position: absolute;
+    left: 25%; bottom: 50%;
+    text-align: center;
+
+}

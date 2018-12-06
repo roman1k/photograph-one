@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>photographProfile</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/photographProfile.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-red">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Внесіть свої дані</h4>
+            </div>
+            <form action="#">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Логін</label>
+                        <input type="text" class="form-control" placeholder="enter your login">
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль</label>
+                        <input type="text" class="form-control" placeholder="enter your password">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Увійти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container, col-md-12" style="width: 100%">
+    <div class="row">
+        <div >
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" style="background: grey" ><img src="../images/logo-inverse-5.png"></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="pole"><a href="#">Чат</a></li>
+                            <li class="pole"><a href="#">Галереї</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle, pole" data-toggle="dropdown">Топ <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Топ фотографів</a></li>
+                                    <li><a href="#">Топ фотографій</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" style="margin-right: 60px">
+                            <button type="button" class="btn btn-default btn-lg, pole" style="margin-right: 20px" data-toggle="modal" data-target=".bs-example-modal-sm">Увійти</button>
+                            <button type="button" class="btn btn-default btn-lg, pole">Зареєструватися</button>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+<div class="container-fluid">
+<div class="row" >
+    <div class="col-md-4">
+        <div class="col-md-12, f_size, p" ><img src="../static/images/photograph.png " class="f_size"></div>
+        <p class="m-30, pole"> [[${City}]]</p>
+        <p class="m-30, pole">[[${Number}]]</p>
+        <p class="m-30, pole">[[${Mail}]]</p>
+        <p class="m-30, pole">[[${Prise}]]</p>
+        <p class="m-30"><button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Facebook.png" height="40px" , width="100px"></button>
+                        <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Instagram_icon.png" height="40px" , width="50px"></button></p>
+
+    </div>
+    <div class="col-md-8">
+        <div class="p">
+             <div class="col-md-6">
+                 <p class="m-30, pole">Name</p>
+                 <p class="m-30, pole">Surname</p>
+                 <p class="m-30, pole">Sex</p>
+                 <p class="m-30, pole">Age</p>
+                 <p class="m-30, pole">Opus</p>
+             </div>
+        <div class="col-md-6"style="background: lightsteelblue">
+            <p class="m-50, pole" style="background: lightsteelblue">Raiting</p>
+            <div class="m-50">SetRaiting</div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12, f_l" style="" >Gallery
+        <div class="wrapper" style="position: relative; margin-top: 43px; width: 942px;">
+            <ul class="forum-event-list ind "><li class="list-item" id="forum-topic-row-86972">
+                <div class="topic-flag-wrap">
+                    <h2>
+                        <a class="link-def" href="/ru/forum/86972/">
+                            "Сладкий Октябрь" Саша и Вика                         </a>
+                    </h2>
+                </div>
+                <ul class="top-info"></ul>
+                <p>
+                    <span class="p">Фотография сделана с МК Т.Терлецкого и Т.Ковальчука.</span>                </p>    <div class="photos-list in-forum">
+                <ul>                <li class="default-photo mini, mini_f">
+                    <a href="/ru/forum/86972/">
+                        <img id="pict_i_2945311" alt="" src="https://lh3.googleusercontent.com/g9VtLwfT2l6YDNJIxMuZhoSfHbx972_NURs2QwKOdZWvJPeOr-kSPypILyptvXhP8qpxwwo1dsp65NyBDTa6s2-2=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                    </a>
+                </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945313" alt="" src="https://lh3.googleusercontent.com/DRXqFGVGqktLRF-DOnFVIy_Gy_KFj3fgmjsZg1KKeQbmun6j6CXucUm9ZwNjbbEXZEgqBkP04ndhB5Ob9qD1RizmNg=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945317" alt="" src="https://lh3.googleusercontent.com/NQ8iOMYtZNpbIuTiM3chiEDivFAdg4PsUhdg8YOVv9h6rV2m8I_Cn6yiEKb3ky1wIkWXoE6uYBemSuKJWUSy9HM=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945318" alt="" src="https://lh3.googleusercontent.com/_o7ew4HiQ1wzcYTAVRKwIthejiLGPl1va2Zxy8o4_YoWaVBepw5kFZr_GPGKF7DtybldMgO6066-G2GkWSq70v2EAA=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945321" alt="" src="https://lh3.googleusercontent.com/-ftq_TO40KnhjfGYajbdY5Ts9CsVYOBWadLo1wDhyErUEIU_mgjRxUP2040yqgzFOZTMhy6yS4vAT4gl8NzAZ_Fk=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945322" alt="" src="https://lh3.googleusercontent.com/IguCu9Nvi5TsPf5wKK8wbZEBq1F3nNdUXcizHYiqwIOEhMxKc1Fiyvmjm9FsdPWQMcPE2RzK_DXcZQCsntEs753QZg=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945324" alt="" src="https://lh3.googleusercontent.com/2jAL5iulmgxRCL6-IX8DUwDeEThfphLdik5LCZfvUeot4ZWa6Vzgjx1z4H7G6Io5zU2n7IbG47by0MAh4W9KqilRdw=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945325" alt="" src="https://lh3.googleusercontent.com/7zP23d2M3C50yTKntOfMgFb6doLjijSMGaQ0tdVG3B6wuzVuk4Z12LKLhYdKfH6kA78QIckelZ2Ju7Kq2UoiL8gBRg=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+                    <li class="default-photo mini, mini_f">
+                        <a href="/ru/forum/86972/">
+                            <img id="pict_i_2945332" alt="" src="https://lh3.googleusercontent.com/4aldBzD4Q7vH98iLZkxPxWAO61bgIBc_cHNhlWdnKDg2dnkImldAmOlZRksqlTxxHzSna6D0ylFHxeF-HbUpT0w=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            </li>
+            </ul>
+
+
+
+</div>
+    </div>
+</div>
+</div>
+</div>
+<footer>
+    <p><button>Топ фотографій</button></p>
+    <p><button>Топ фотографів</button></p>
+    <p><button>Новини</button></p>
+    <p><button>Чат</button></p>
+    <button>Про сайт</button>
+    <button>Інформація про розробників</button>
+</footer>
+</body>
+
+<script>
+   // <select id="rating" name ="mark"></select>
+    function getRating() {
+        var start = 1;
+        var end = 5;
+        var options ="";
+        for(var rating = start ; rating <=end; rating++){
+            options += "<option>"+ rating +"</option>";
+        }
+        document.getElementById("ratting").innerHTML = options;
+    }
+</script>
+</html>
