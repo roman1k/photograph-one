@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>photographProfile</title>
@@ -15,32 +16,6 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body class="bg-red">
-<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Внесіть свої дані</h4>
-            </div>
-            <form action="#">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label>Логін</label>
-                        <input type="text" class="form-control" placeholder="enter your login">
-                    </div>
-                    <div class="form-group">
-                        <label>Пароль</label>
-                        <input type="text" class="form-control" placeholder="enter your password">
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Увійти</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 <div class="container, col-md-12" style="width: 100%">
     <div class="row">
         <div >
@@ -71,8 +46,8 @@
                             </li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right" style="margin-right: 60px">
-                            <button type="button" class="btn btn-default btn-lg, pole" style="margin-right: 20px" data-toggle="modal" data-target=".bs-example-modal-sm">Увійти</button>
-                            <button type="button" class="btn btn-default btn-lg, pole">Зареєструватися</button>
+                            <button type="button" class="btn btn-default btn-lg, pole">Мій профіль</button>
+                            <button type="button" class="btn btn-default btn-lg, pole" style="margin-left: 30px">Вийти</button>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -86,7 +61,7 @@
 <div class="row" >
     <div class="col-md-4">
         <div class="col-md-12, f_size, p" ><img src="../images/photograph.png " class="f_size"></div>
-        <p class="m-30, pole"> [[${user.getUserdeCity}]]</p>
+        <p class="m-30, pole"> [[${hfdcjg}]]</p>
         <p class="m-30, pole">[[${Number}]]</p>
         <p class="m-30, pole">[[${Mail}]]</p>
         <p class="m-30, pole">[[${Prise}]]</p>
@@ -111,9 +86,9 @@
     </div>
 
     <div class="col-md-12, f_l" style="" >Gallery
-        <div class="wrapper" style="position: relative; margin-top: 43px; width: 942px;">
+        <div class="wrapper " style="position: relative; margin-top: 43px;">
             <ul class="forum-event-list ind "><li class="list-item" id="forum-topic-row-86972">
-                <div class="topic-flag-wrap">
+                <div class="topic-flag-wrap col-md-12">
                     <h2>
                         <a class="link-def" href="/ru/forum/86972/">
                             "Сладкий Октябрь" Саша и Вика                         </a>
@@ -157,17 +132,6 @@
                             <img id="pict_i_2945324" alt="" src="https://lh3.googleusercontent.com/2jAL5iulmgxRCL6-IX8DUwDeEThfphLdik5LCZfvUeot4ZWa6Vzgjx1z4H7G6Io5zU2n7IbG47by0MAh4W9KqilRdw=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
                         </a>
                     </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945325" alt="" src="https://lh3.googleusercontent.com/7zP23d2M3C50yTKntOfMgFb6doLjijSMGaQ0tdVG3B6wuzVuk4Z12LKLhYdKfH6kA78QIckelZ2Ju7Kq2UoiL8gBRg=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945332" alt="" src="https://lh3.googleusercontent.com/4aldBzD4Q7vH98iLZkxPxWAO61bgIBc_cHNhlWdnKDg2dnkImldAmOlZRksqlTxxHzSna6D0ylFHxeF-HbUpT0w=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-
                 </ul>
             </div>
             </li>
@@ -200,4 +164,5 @@
         document.getElementById("ratting").innerHTML = options;
     }
 </script>
+</html>
 </html>
