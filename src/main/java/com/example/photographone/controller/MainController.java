@@ -38,9 +38,9 @@ public class MainController {
     }
 
     @PostMapping("/successURL")
-    private  String saveUser( ) {
+    private  String saveUser() {
         System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
-        return "next";
+        return "redirect:/photographProfile";
     }
 
 
