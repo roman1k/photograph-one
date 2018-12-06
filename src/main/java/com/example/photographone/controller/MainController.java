@@ -28,13 +28,13 @@ public class MainController {
     @GetMapping("/newPhotograph")
     public String newPhotograph(User user, Contact contact){
         userService.savePhotograph(user,contact);
-        return "";
+        return "redirect:/";
     }
 
     @GetMapping("/newUser")
     public String newUser(User user, Contact contact){
         userService.saveUser(user,contact);
-        return "index";
+        return "redirect:/";
     }
 
     @PostMapping("/successURL")
