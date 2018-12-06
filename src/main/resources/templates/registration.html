@@ -28,7 +28,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Внесіть свої дані</h4>
             </div>
-            <form th:action="@{/newPhotograph}">
+            <form th:action="@{/newPhotograph}" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Логін</label>
@@ -58,7 +58,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Внесіть свої дані</h4>
             </div>
-            <form th:action="@{/newUser}">
+            <form th:action="@{/newUser}" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Логін</label>
