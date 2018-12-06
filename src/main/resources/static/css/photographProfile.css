@@ -91,7 +91,7 @@
 }
 .footer{
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
     background: red;
     color: black;
     font-size: 30px;
@@ -115,5 +115,13 @@
     top: 25%;
     width: 50%;
     font-family: "Segoe Script";
+}
+.footer div a {
+    float: left;
+    margin-left: 60px;
+}
+.footer div button{
+    float: left;
+    margin-left: 60px;
 
 }
