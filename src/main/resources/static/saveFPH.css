@@ -64,6 +64,9 @@
 .p{
     padding: 10px;
 }
+.p-top-10{
+    padding-top: 10px;
+}
 .pole{
     font-weight: bold;
     font-family: "Segoe Script";
@@ -185,7 +188,7 @@
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-size: 26px;
+    font-size: 18px;
     background-color: white;
     text-align: center;
     background-position: 0px 0px;

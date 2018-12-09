@@ -64,29 +64,27 @@
     <div class="container-fluid">
         <div class="row m-l-80 m-r-80">
             <div class="col-md-3 ">
-                <div class = "simple-form">
+                <div >
                     <!--<img src="../images/photo_1.jpg">-->
                     <img src="../images/photo_1.jpg" class="avatar ">
-                    <input type = "file" name = "avatar" placeholder="додати фото">
+                    <input class = "simple-form" type = "file" name = "avatar" placeholder="додати фото">
                 </div>
                 <div class = "simple-form">
-                    <label><b>Ім'я</b></label>
                     <input type="text" name="firstName" placeholder="ім'я">
                 </div>
                 <div class = "simple-form">
-                    <label><b>прізвище</b></label>
                     <input type="text" name="lastName" placeholder="прізвище">
                 </div>
 
-                <div class = "simple-form">
-                    <select name="sex">
+                <div >
+                    <select  class = "simple-form-drop" name="sex">
                         <option id="male">Male</option>
                         <option id="female">Female</option>
                         <option id="anyone">Anyone</option>
                     </select>
                 </div>
                 <div >
-                    <select class = "simple-form-age"id="year" name ="Age" placeholder="18">
+                    <select class = "simple-form-drop"id="year" name ="Age" placeholder="18">
 
                     </select>
                 </div>
@@ -121,14 +119,19 @@
 
                     <input type="number" name="Sale" placeholder="ціна"></div>
                 <div class = "simple-form">
-
+                    <h4>Створити галерею</h4>
                     <input type="text" name="nameGallery" placeholder="Назва галереї">
-                    <input type="file" name="photos" placeholder="add photos" multiple />
-                    <input type="submit">
+                </div>
+                <div class="p-top-10">
+                    <input class = "simple-form" type="file" name="photos" placeholder="add photos" multiple />
+                </div>
+                <div class="p-top-10">
+                    <input class="btn btn-success" type="submit">
+                </div>
                     <!--Gallary-->
                 </div>
 
-                <button id="#btn">надіслати</button>
+
 
             </div>
 
