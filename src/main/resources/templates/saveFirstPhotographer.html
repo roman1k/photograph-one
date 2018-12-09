@@ -18,64 +18,117 @@
 <body>
 
 
+
+
+
 <form id="regOFphotograph" method="get" action="/saveFirstPhotographer" enctype="multipart/form-data">
-    <div class="container">
-        <div>
-            <div class="col-md-3">
+    <div class="container, col-md-12">
+        <div class="row">
+            <div >
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#" style="background: grey" ><img src="../images/logo-inverse-5.png"></a>
+                        </div>
 
-                <div class="avatar ">
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="pole"><a href="#">Чат</a></li>
+                                <li class="pole"><a href="#">Галереї</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle, pole" data-toggle="dropdown">Топ <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Топ фотографів</a></li>
+                                        <li><a href="#">Топ фотографій</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right" style="margin-right: 60px">
+                                <button type="button" class="btn btn-default btn-lg, pole">Мій профіль</button>
+                                <button type="button" class="btn btn-default btn-lg, pole" style="margin-left: 30px">Вийти</button>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row m-l-80 m-r-80">
+            <div class="col-md-3 ">
+                <div class = "simple-form">
                     <!--<img src="../images/photo_1.jpg">-->
-
+                    <img src="../images/photo_1.jpg" class="avatar ">
                     <input type = "file" name = "avatar" placeholder="додати фото">
                 </div>
-                <div>
+                <div class = "simple-form">
+                    <label><b>Ім'я</b></label>
                     <input type="text" name="firstName" placeholder="ім'я">
                 </div>
-                <div>
+                <div class = "simple-form">
+                    <label><b>прізвище</b></label>
                     <input type="text" name="lastName" placeholder="прізвище">
                 </div>
 
-                <div>
+                <div class = "simple-form">
                     <select name="sex">
                         <option id="male">Male</option>
                         <option id="female">Female</option>
                         <option id="anyone">Anyone</option>
                     </select>
                 </div>
-                <div>
-                    <select id="year" name ="Age" placeholder="18">
+                <div >
+                    <select class = "simple-form-age"id="year" name ="Age" placeholder="18">
 
                     </select>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 p-l-150">
 
-                <div>
-                    <textarea type="text" name="description" placeholder="description"></textarea>
+                <div class = "simple-form">
+                    <textarea type="text" name="description" placeholder="розкажіть про себе"></textarea>
                 </div>
 
-                <div>
+                <div class = "simple-form">
+
                     <input type="text" name="email" placeholder="email">
                 </div>
-                <div>
+                <div class = "simple-form">
+
                     <input type="number" name="number" placeholder="phone">
                 </div>
-                <div>
+                <div class = "simple-form">
+
                     <input type="text" name="facebook" placeholder="facebook">
                 </div>
-                <div>
+                <div class = "simple-form">
+
                     <input type="text" name="instagram" placeholder="instagram">
                 </div>
-                <div>
+                <div class = "simple-form">
+
                     <input type="text" name="city" placeholder="city">
                 </div>
-                <div> <input type="number" name="Sale"></div>
-                <div>
-                    <input type="text" name="nameGallery" placeholder="gallaery">
+                <div class = "simple-form">
+
+                    <input type="number" name="Sale" placeholder="ціна"></div>
+                <div class = "simple-form">
+
+                    <input type="text" name="nameGallery" placeholder="Назва галереї">
                     <input type="file" name="photos" placeholder="add photos" multiple />
                     <input type="submit">
                     <!--Gallary-->
-                </div><button id="#btn">надіслати</button>
+                </div>
+
+                <button id="#btn">надіслати</button>
 
             </div>
 
