@@ -28,19 +28,22 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Внесіть свої дані</h4>
             </div>
-            <form th:action="@{/newPhotograph}">
+            <form th:action="@{/newPhotograph}"  method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Логін</label>
                         <input type="text" class="form-control" name="username" placeholder="enter your login">
+                        <!--/*@thymesVar id="presented" type=""*/-->
+                        <span th:if="${!presented}">[[${message}]]</span>
+
                     </div>
                     <div class="form-group">
-                        <label>Пароль</label>
+                        <label>Пароль</label>`
                         <input type="password" class="form-control" name = "password" placeholder="enter your password">
                     </div>
                     <div class="form-group">
                         <label>Електронна пошта</label>
-                        <input type="email" class="form-control" name="mail" placeholder="enter your email">
+                        <input type="email" class="form-control" name="email" placeholder="enter your email">
                     </div>
 
                 </div>
@@ -58,7 +61,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 <h4 class="modal-title">Внесіть свої дані</h4>
             </div>
-            <form th:action="@{/newUser}">
+            <form th:action="@{/newUser}" method="post">
                 <div class="modal-body">
                     <div class="form-group">
                         <label>Логін</label>
@@ -70,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label>Електронна пошта</label>
-                        <input type="email" class="form-control" name="mail" placeholder="enter your email">
+                        <input type="email" class="form-control" name="email" placeholder="enter your email">
                     </div>
                 </div>
                 <div class="modal-footer">

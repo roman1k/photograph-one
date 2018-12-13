@@ -5,6 +5,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -20,6 +21,7 @@ public class User  implements UserDetails {
     private UserDepended userDep = new UserDepended();
 
 //    @Column(unique = true)
+    @NotEmpty(message = "Введіть логін")
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)
