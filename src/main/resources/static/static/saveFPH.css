@@ -1,0 +1,20 @@
+*{
+    padding-top: 3px;
+    background: lawngreen;
+}
+
+.avatar{
+    border-radius: 10px;
+    border: 1px solid darkgrey;
+    max-width: 200px;
+    max-height: 300px;
+    width: 23%;
+    height: 300px;
+    float: left;
+    padding: 10px;
+    margin-right: 25px;
+}
+
+.bg-red{
+    background: blue;
+}

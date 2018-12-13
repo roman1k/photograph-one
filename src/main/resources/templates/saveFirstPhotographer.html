@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../static/saveFPH.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<form id="regOFphotograph" method="post" action="/saveFirstPhotographer" >
+    <div class="container">
+        <div>
+            <div class="col-md-3">
+
+                <div class="avatar ">
+                    <!--<img src="../images/photo_1.jpg">-->
+
+                    <input type = "file" name = "avatar" placeholder="додати фото">
+                </div>
+                <div>
+                    <input type="text" name="firstName" placeholder="ім'я">
+                </div>
+                <div>
+                    <input type="text" name="lastName" placeholder="прізвище">
+                </div>
+
+                <div>
+                    <select name="sex">
+                        <option id="male">Male</option>
+                        <option id="female">Female</option>
+                        <option id="anyone">Anyone</option>
+                    </select>
+                </div>
+                <div>
+                    <select id="year" name ="Age" placeholder="18">
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-9">
+
+                <div>
+                    <textarea type="text" name="description" placeholder="description"></textarea>
+                </div>
+
+                <div>
+                    <input type="text" name="email" placeholder="email">
+                </div>
+                <div>
+                    <input type="number" name="number" placeholder="phone">
+                </div>
+                <div>
+                    <input type="text" name="facebook" placeholder="facebook">
+                </div>
+                <div>
+                    <input type="text" name="instagram" placeholder="instagram">
+                </div>
+                <div>
+                    <input type="text" name="city" placeholder="city">
+                </div>
+                <div> <input type="number" name="Sale"></div>
+                <div>
+                    <input type="text" name="nameGallery" placeholder="gallaery">
+                    <input type="file" name="photos" placeholder="add photos" multiple />
+                    <input type="submit">
+                    <!--Gallary-->
+                </div><button id="#btn">надіслати</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+</body>
+<script>
+    function getYear() {
+        var start = 18;
+        var end = 120;
+        var options = "";
+        for(var year = start ; year <=end; year++){
+            options += "<option>"+ year +"</option>";
+        }
+        document.getElementById("year").innerHTML = options;
+    }
+
+    getYear()
+</script>
+
+
+</html>
