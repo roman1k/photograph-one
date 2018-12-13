@@ -10,7 +10,7 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nameCity;
-//constructor
+    //constructor
     public City() {
     }
 

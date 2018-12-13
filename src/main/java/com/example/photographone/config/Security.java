@@ -22,19 +22,19 @@ public class Security  extends WebSecurityConfigurerAdapter {
 
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/","/saveUser","/admin","/userFound","/allCities","/saveCity").permitAll()
-                .anyRequest().authenticated()//на всі інші тільки аутентифіковані
-                .antMatchers("/admin/**").hasRole("ADMIN")//тільки адмін на такі
+                .antMatchers("/","/saveUser", "/choice/", "/images/**", "/css/**", "/registration", "/newPhotograph","/newUser")
+                .permitAll()
+                .antMatchers("/admin/**", "/admin").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .successForwardUrl("/successURL")
-                .failureUrl("/login?error").permitAll()
+                .failureUrl("/login?error")
                 .permitAll()
                 .and()
                 .logout()

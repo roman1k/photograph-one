@@ -1,50 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec = "http://www.thymeleaf.org/thymeleaf-extras-spingscurity3">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Title</title>
 </head>
 <body>
-
-
-
-<div class="login">
-    <form th:action="@{/login}" method="post">
-        <input type="text" name="username/" placeholder="Enter username">
-        <input type="current-password" name="password/" placeholder="Password">
-        <input type="submit" name="Login">
-    </form>
-</div>
-
+<hr>
+<H1>Реєстрація </H1>
 <form th:action="@{/saveUser}" method="post">
-
-    <div class="user_registration">
-        <ul>
-            <li><label th:for="first_name">First Name:</label></li>
-            <li><label th:for="email">E-mail:</label></li>
-            <input type="text" name="username" placeholder="Enter login" required>
-            <li><label th:for="password">password:</label></li>
-            <input type="password" name="password" placeholder="Enter password" required>
-            <h3><li><input type="submit" name="Sign up!"></li></h3>
-        </ul>
-
-
-    </div>
-
+    <input type="" name="username" placeholder="">
+    <input type="password" name="password" placeholder="">
+    <input type ="email"  name = "mail" placeholder="">
+    <input type = "submit" value="go!">
 </form>
-
-<div class="login">
-<form th:action="@{/userFound}">
-    <input type="text" name="username" placeholder="Enter username">
-    <input type="submit" name="Login">
-</form>
-</div>
-
+<!--<form th:action="@{/login}" method="post">-->
+    <!--<input type="" name="username" placeholder="">-->
+    <!--<input type="password" name="password" placeholder="">-->
+    <!--<input type = "submit" value="go!">-->
+<!--</form>-->
 
 </body>
 </html>
-
-
-

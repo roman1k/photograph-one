@@ -11,14 +11,15 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "UserLogin")
+@Table( name = "userLog", uniqueConstraints={@UniqueConstraint(columnNames={"username"})})
 public class User  implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
     @OneToOne(optional = false)
     private UserDepended userDep = new UserDepended();
-    @Column(unique = true)
+
+//    @Column(unique = true)
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)
@@ -124,7 +125,7 @@ public class User  implements UserDetails {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
+                userDep.getContact().getEmail() +
                 '}';
     }
 }

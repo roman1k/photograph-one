@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+
 public class Photograph  extends UserDepended{
     @Id
     @OneToOne(optional = false)
@@ -16,7 +17,7 @@ public class Photograph  extends UserDepended{
     private Sex sex;
     @OneToOne(optional = false)
     private Contact contact;
-    private int Sale;
+    private int sale;
     @OneToMany
     private List<Gallery> galleries = new ArrayList<>();
     @OneToOne(optional = false)
@@ -68,11 +69,11 @@ public class Photograph  extends UserDepended{
     }
 
     public int getSale() {
-        return Sale;
+        return sale;
     }
 
     public void setSale(int sale) {
-        Sale = sale;
+        sale = sale;
     }
 
     public List<Gallery> getGalleries() {
@@ -107,7 +108,7 @@ public class Photograph  extends UserDepended{
         if (o == null || getClass() != o.getClass()) return false;
         Photograph that = (Photograph) o;
         return age == that.age &&
-                Sale == that.Sale &&
+                sale == that.sale &&
                 Objects.equals(userDepended, that.userDepended) &&
                 Objects.equals(avatar, that.avatar) &&
                 sex == that.sex &&
@@ -119,7 +120,7 @@ public class Photograph  extends UserDepended{
 
     @Override
     public int hashCode() {
-        return Objects.hash(userDepended, avatar, age, sex, contact, Sale, galleries, rating, description);
+        return Objects.hash(userDepended, avatar, age, sex, contact, sale, galleries, rating, description);
     }
 
 
@@ -133,7 +134,7 @@ public class Photograph  extends UserDepended{
         age = age;
         this.sex = sex;
         this.contact = contact;
-        Sale = sale;
+        sale = sale;
         this.galleries = galleries;
         this.rating = rating;
         this.description = description;
@@ -149,7 +150,7 @@ public class Photograph  extends UserDepended{
                 ", Age=" + age +
                 ", sex=" + sex +
                 ", contact=" + contact +
-                ", Sale=" + Sale +
+                ", Sale=" + sale +
                 ", galleries=" + galleries +
                 ", rating=" + rating +
                 ", description='" + description + '\'' +
