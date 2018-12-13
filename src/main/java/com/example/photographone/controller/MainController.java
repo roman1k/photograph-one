@@ -31,7 +31,6 @@ public class MainController {
 
     @GetMapping("/newPhotograph")
     public  String mainP (Model model){
-        model.addAttribute("presented", true);
         return "index";
     }
 
@@ -42,7 +41,6 @@ public class MainController {
                                 BindingResult bindingResult,
                                 Model model
     ){
-        model.addAttribute("presented", false);
         userValidator.validate(user, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -55,18 +53,19 @@ public class MainController {
 
             }
 
-            model.addAttribute("presented", false);
+            model.addAttribute("presented", true);
             model.addAttribute("message", complexError);
             return "index";
         }
         userService.savePhotograph(user,contact);
-        return "redirect:/";
+        return "redirect:/newPhotograph";
     }
 
     @PostMapping("/newUser")
     public String newUser(User user,
                           Contact contact,
-                          BindingResult bindingResult){
+                          BindingResult bindingResult,
+                          Model model){
         userService.saveUser(user,contact);
         return "redirect:/";
     }
