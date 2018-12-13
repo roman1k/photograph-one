@@ -14,7 +14,7 @@ public class Photograph  extends UserDepended{
     private UserDepended userDepended;
     private  String avatar;
     private int age;
-    private Sex sex;
+    private Sex sex ;
     @OneToOne(optional = false)
     private Contact contact;
     private int sale;
@@ -145,7 +145,6 @@ public class Photograph  extends UserDepended{
     @Override
     public String toString() {
         return "Photograph{" +
-                "userDepended=" + userDepended +
                 ", avatar='" + avatar + '\'' +
                 ", Age=" + age +
                 ", sex=" + sex +

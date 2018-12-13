@@ -33,16 +33,16 @@ public class PhotographController {
 
 
 
-    @GetMapping("/saveFirstPhotographer")
+    @PostMapping("/saveFirstPhotographer1")
     public String saveFirstPhotographer(
             @RequestParam MultipartFile avatar,
             @RequestParam String firstName,
             @RequestParam String lastName,
             @RequestParam int Age,
-            @RequestParam Sex sex,
+            @RequestParam int sage,
             @RequestParam String description,
             @RequestParam String email,
-            @RequestParam long number,
+            @RequestParam String number1,
             @RequestParam String facebook,
             @RequestParam String instagram,
             @RequestParam String city,
@@ -52,6 +52,17 @@ public class PhotographController {
             @AuthenticationPrincipal User user
             ) {
         System.out.println("1________________________________");
+        Sex sex = Sex.MAN;
+                if (sage ==2){
+                    sex = Sex.WOMAN;
+                }
+        long number;
+        if(number1.isEmpty()){
+                  number = 1;
+                }
+                else {
+            number = Long.parseLong(number1);
+        }
 
         Photograph photograph =(Photograph)user.getUserDep();
         System.out.println("2___________________________");
