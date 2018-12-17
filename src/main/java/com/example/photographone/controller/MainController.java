@@ -38,16 +38,14 @@ public class MainController {
 
     @PostMapping("/successURL")
     private  String saveUser(@AuthenticationPrincipal User user) {
-        System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
-        return "redirect:/photographProfile/"+ user.getUsername();
-    }
-    @PostMapping("/photographProfile/{username}")
-    private  void pagePhotograph(@PathVariable String username, Model model, Model model1) {
-        User user =(User)userService.loadUserByUsername(username);
-        Photograph photograph = (Photograph) user.getUserDep();
-        model.addAttribute("user", user);
-        model1.addAttribute("photograph", photograph);
-        System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
+        if (user.getUserDep() instanceof Photograph){
+        return "redirect:/photograph/MyPage";}
+        else  if (user.getUserDep() instanceof Costumer) {
+            return "redirect:/user/MyPage";
+        } else
+            return "redirect:/admin/" + user.getUsername();
+        }
+
 
     }
 
@@ -56,4 +54,3 @@ public class MainController {
 
 
 
-}
