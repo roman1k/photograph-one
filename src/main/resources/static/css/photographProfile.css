@@ -116,6 +116,15 @@
     width: 50%;
     font-family: "Segoe Script";
 }
+.showcase-user{
+    background-color: rgba(13, 17, 27, 0.8);
+    padding: 40px;
+    color: white;
+    z-index: 1;
+    top: 25%;
+    width: 50%;
+    font-family: "Segoe Script";
+}
 .footer div a {
     float: left;
     margin-left: 60px;

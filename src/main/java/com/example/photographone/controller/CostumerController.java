@@ -1,6 +1,8 @@
 package com.example.photographone.controller;
 
 import com.example.photographone.models.Costumer;
+import com.example.photographone.models.Photograph;
+import com.example.photographone.models.Search;
 import com.example.photographone.models.User;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user/")
@@ -35,7 +37,14 @@ public class CostumerController {
         model.addAttribute("user", user);
         model.addAttribute("photograph", costumer);
         System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
-        return "CostumerProfile";
+        return "costumerProfile";
 
+    }
+    @GetMapping ("/selectPhotograph")
+    public @ResponseBody List<User> select (@RequestBody Search search){
+        System.out.println("________________________________");
+        List<User> photographs= userService.selectPhotographs(search.getCity(),search.getPriceLower(),search.getPriceHigher());
+
+        return  photographs;
     }
 }
