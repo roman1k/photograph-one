@@ -27,7 +27,7 @@
 </div>
 
 <div>
-    <form action="/allCities">
+    <form th:action="@{/allCities}">
         <input type="submit" value="Переглянути всі міста">
         <ul>
             <li th:each="cities : ${cities}">
@@ -35,4 +35,22 @@
             </li>
         </ul>
     </form>
+</div>
+<div>
+    <form th:action="@{/saveCity}" method="post">
+        <input name="nameCity" placeholder="Введіть нове місто">
+        <input type="submit" value="добавити місто">
+    </form>
+
+</div>
+
+                    <!--//створити нового адміна(логін, пароль,пошта)-->
+<div>
+    <form th:action="@{/addAdmin}" method="post">
+        <input name="loginAdmin" placeholder="логін">
+        <input name="passwordAdmin" placeholder="пароль">
+        <input name="emailAdmin" placeholder="пошта">
+        <input type="submit" value="добавити адміна">
+    </form>
+
 </div>
