@@ -10,7 +10,7 @@ public class Webcofig  implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-       registry.addViewController("/photographProfile").setViewName("/photographProfile");
+       registry.addViewController("/login").setViewName("/index");
        registry.addViewController("/registration").setViewName("/registration");
 
     }

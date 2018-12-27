@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>photographProfile</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../css/photographProfile.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-red">
+
+<div class="container, col-md-12" style="width: 100%">
+    <div class="row">
+        <div >
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" style="background: grey" ><img src="../images/logo-inverse-5.png"></a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="pole"><a href="#">Чат</a></li>
+                            <li class="pole"><a href="#">Галереї</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle, pole" data-toggle="dropdown">Топ <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Топ фотографів</a></li>
+                                    <li><a href="#">Топ фотографій</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right" style="margin-right: 60px">
+                            <button type="button" class="btn btn-default btn-lg, pole">Мій профіль</button>
+                            <button type="button" class="btn btn-default btn-lg, pole" style="margin-left: 30px">Вийти</button>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-md-4">
+            <div class="col-md-12, f_size, p" ><img src="../images/photograph.png " class="f_size"></div>
+            <p class="m-30, pole"> [[${City}]]</p>
+            <p class="m-30, pole">[[${Number}]]</p>
+            <p class="m-30, pole">[[${Mail}]]</p>
+
+        </div>
+        <div class="col-md-8">
+            <div class="p">
+                <div class="col-md-6">
+                    <p class="m-30, pole">Name</p>
+                    <p class="m-30, pole">Surname</p>
+                    <p class="m-30, pole">Sex</p>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="showcase-user  showcase-sm, col-md-offset-3 ">
+    <div class="container col-md-12">
+        <div class="search-box">
+            <div  id="f1" class="form-inline">
+
+                <div class="form-group">
+                    <div class="small">Місто</div>
+                    <input type="" id="city" >
+                </div>
+                <div class="form-group">
+                    <div class="small">Ціна</div>
+                    <input type="" id="priceHigher">
+                </div>
+                <div class="form-group">
+                    <div class="small">Ціна</div>
+                    <input type="" id="priceLower" >
+                </div>
+                <input type="submit" id="selectPhotograph" class="btn-search btn btn-default btn-lg" style="margin-left: 15px">Пошук</input>
+            </div>
+        </div>
+    </div>
+    <div id="showPhotograph"> </div>
+</div>
+
+<footer>
+    <p><button>Новини</button></p>
+    <p><button>Чат</button></p>
+    <button>Про сайт</button>
+    <button>Інформація про розробників</button>
+</footer>
+
+<script>
+    $("#selectPhotograph").click(function (event) {
+
+        let city = $("#city").val();
+        let priceLower = $("#priceLower").val();
+        let priceHigher = $("#priceHigher").val();
+       $.ajax({
+           url: '/user/selectPhotograph',
+           contentType: 'text/plain',
+           data:JSON.stringify({city, priceLower, priceHigher}),
+           success: function (response) {
+               console.log(response);
+               for (const singleUser of response){
+                   let present = $('div/', {
+                       text: singleUser.username
+                   });
+                   $("#showPhotograph").append(present)
+
+               }
+           },
+           error: function (err) {
+               console.log(err)
+
+           }
+
+       })
+
+
+
+    });
+
+</script>
+</body>
+
+
+</html>
+</html>

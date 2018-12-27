@@ -73,7 +73,7 @@ public class Photograph  extends UserDepended{
     }
 
     public void setSale(int sale) {
-        sale = sale;
+        this.sale = sale;
     }
 
     public List<Gallery> getGalleries() {
