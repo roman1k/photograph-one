@@ -9,7 +9,7 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="../css/photographProfile.css">
+    <link rel="stylesheet" href="../static/css/photographProfile.css">
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -29,7 +29,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#" style="background: grey" ><img src="../images/logo-inverse-5.png"></a>
+                        <a class="navbar-brand" href="#" style="background: grey" ><img src="../static/images/logo-inverse-5.png"></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,19 +60,18 @@
 <div class="container-fluid">
 <div class="row" >
     <div class="col-md-4">
-        <div class="col-md-12, f_size, p" ><img src="../images/photograph.png " class="f_size"></div>
-        <p class="m-30, pole"> [[${hfdcjg}]]</p>
+        <div class="col-md-12, f_size, p" ><img src="../static/images/photograph.png " class="f_size"></div>
         <p class="m-30, pole">[[${Number}]]</p>
         <p class="m-30, pole">[[${Mail}]]</p>
         <p class="m-30, pole">[[${Prise}]]</p>
-        <p class="m-30"><button type="button" class="btn btn-default" style="background: transparent"><img src="../images/Facebook.png" height="40px" , width="100px"></button>
-                        <button type="button" class="btn btn-default" style="background: transparent"><img src="../images/Instagram_icon.png" height="40px" , width="50px"></button></p>
+        <p class="m-30"><button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Facebook.png" height="40px" , width="100px"></button>
+                        <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Instagram_icon.png" height="40px" , width="50px"></button></p>
 
     </div>
     <div class="col-md-8">
         <div class="p">
              <div class="col-md-6">
-                 <p class="m-30, pole">Name</p>
+                 <p class="m-30, pole" >th:text="${user.firstName}"</p>
                  <p class="m-30, pole">Surname</p>
                  <p class="m-30, pole">Sex</p>
                  <p class="m-30, pole">Age</p>
@@ -144,12 +143,14 @@
 </div>
 </div>
 </div>
-<footer>
-    <p><button>Новини</button></p>
-    <p><button>Чат</button></p>
-    <button>Про сайт</button>
-    <button>Інформація про розробників</button>
-</footer>
+<div class="container-fluid, footer" >
+    <p></p><a href="">Правила сайту</a></p>
+    <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Facebook.png" height="40px" , width="100px"></button>
+    <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Instagram_icon.png" height="40px" , width="50px"></button></p>
+
+</div>
+
+
 </body>
 
 <script>

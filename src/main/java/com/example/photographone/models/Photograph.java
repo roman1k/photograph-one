@@ -17,7 +17,7 @@ public class Photograph  extends UserDepended{
     private Sex sex;
     @OneToOne(optional = false)
     private Contact contact;
-    private int sale;
+    private int price;
     @OneToMany
     private List<Gallery> galleries = new ArrayList<>();
     @OneToOne(optional = false)
@@ -69,7 +69,7 @@ public class Photograph  extends UserDepended{
     }
 
     public int getSale() {
-        return sale;
+        return price;
     }
 
     public void setSale(int sale) {
@@ -108,7 +108,7 @@ public class Photograph  extends UserDepended{
         if (o == null || getClass() != o.getClass()) return false;
         Photograph that = (Photograph) o;
         return age == that.age &&
-                sale == that.sale &&
+                price == that.price &&
                 Objects.equals(userDepended, that.userDepended) &&
                 Objects.equals(avatar, that.avatar) &&
                 sex == that.sex &&
@@ -120,7 +120,7 @@ public class Photograph  extends UserDepended{
 
     @Override
     public int hashCode() {
-        return Objects.hash(userDepended, avatar, age, sex, contact, sale, galleries, rating, description);
+        return Objects.hash(userDepended, avatar, age, sex, contact, price, galleries, rating, description);
     }
 
 
@@ -150,7 +150,7 @@ public class Photograph  extends UserDepended{
                 ", Age=" + age +
                 ", sex=" + sex +
                 ", contact=" + contact +
-                ", Sale=" + sale +
+                ", Sale=" + price +
                 ", galleries=" + galleries +
                 ", rating=" + rating +
                 ", description='" + description + '\'' +

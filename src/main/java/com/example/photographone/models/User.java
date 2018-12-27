@@ -1,5 +1,6 @@
 package com.example.photographone.models;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +22,7 @@ public class User  implements UserDetails {
     private UserDepended userDep = new UserDepended();
 
 //    @Column(unique = true)
+    @Length()
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)

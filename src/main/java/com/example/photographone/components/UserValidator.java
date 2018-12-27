@@ -20,4 +20,5 @@ public class UserValidator implements Validator {
                 errors.rejectValue("username", "name.empty", "enter your name");
             }
     }
+
 }

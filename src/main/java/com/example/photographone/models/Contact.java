@@ -9,7 +9,6 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
-    @Size(min = 3, max = 25, message = "довжина неправильна")
     private String email;
     private long number;
     private String facebook;
@@ -18,6 +17,7 @@ public class Contact {
     private  City city;
 
     //constuctors
+    public  Contact(){}
     public Contact(String email, long number, String facebook, String instagram, City city1) {
     }
 

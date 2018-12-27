@@ -31,6 +31,7 @@ public class MainController {
 
     @GetMapping("/newPhotograph")
     public  String mainP (Model model){
+
         return "index";
     }
 
@@ -38,33 +39,24 @@ public class MainController {
     @PostMapping("/newPhotograph")
     public String newPhotograph(User user,
                                 Contact contact,
-                                BindingResult bindingResult,
                                 Model model
     ){
-        userValidator.validate(user, bindingResult);
-
-        if (bindingResult.hasErrors()) {
-
-            String complexError="";
-            List<ObjectError> allErrors = bindingResult.getAllErrors();
-            for (ObjectError error:allErrors) {
-                String defaultMessage = error.getDefaultMessage();
-                complexError += defaultMessage+" ";
-
-            }
-
-            model.addAttribute("presented", true);
-            model.addAttribute("message", complexError);
-            return "index";
+        if (userService.findAll().stream().anyMatch(user1 -> user1.getUsername().equals(user.getUsername()))){
+           model.addAttribute("massageForLogin", "This name is olredy exist");
         }
-        userService.savePhotograph(user,contact);
+        if(userService.findAll().stream().anyMatch(user1 -> user1.getUserDep().getContact().getEmail().equals(user.getUserDep().getContact().getEmail()))) {
+            model.addAttribute("massageForEmail", "This email is olredy exist");
+        }
+
+
+
+            userService.savePhotograph(user,contact);
         return "redirect:/newPhotograph";
     }
 
     @PostMapping("/newUser")
     public String newUser(User user,
                           Contact contact,
-                          BindingResult bindingResult,
                           Model model){
         userService.saveUser(user,contact);
         return "redirect:/";
@@ -75,8 +67,6 @@ public class MainController {
         System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
         return "redirect:/photographProfile";
     }
-
-
 
 
 }
