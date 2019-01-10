@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form id="regOFphotograph" th:action="/saveFirstPhotographer" method="post">
+    <div>
+        <input type = "file" name = "avatar" placeholder="додати фото">
+    </div>
+    <div>
+        <input type="text" name="firstName" placeholder="ім'я">
+    </div>
+    <div>
+        <input type="text" name="lastName" placeholder="прізвище">
+    </div>
+    <div>
+        <select id="year" name ="Age"></select>
+    </div>
+    <div>
+
+        <select name="sex">
+            <option id="male">Male</option>
+            <option id="female">Female</option>
+            <option id="anyone">Anyone</option>
+        </select>
+    </div>
+
+    <h4>contacts</h4>
+    <div>
+        <input type="text" name="email" placeholder="email">
+    </div>
+    <div>
+        <input type="number" name="number" placeholder="phone">
+    </div>
+    <div>
+        <input type="text" name="facebook" placeholder="facebook">
+    </div>
+    <div>
+        <input type="text" name="instagram" placeholder="instagram">
+    </div>
+    <div>
+        <input type="" name="city" placeholder="city">
+    </div>
+
+
+
+    <div>
+        <input type="text" name="description" placeholder="description">
+    </div>
+
+    <div>
+        <!--Gallary-->
+    </div>
+    <button id="#btn">надіслати</button>>
+
+</form>
+
+</body>
+<script>
+    function getYear() {
+        var start = 18;
+        var end = 120;
+        var options = "";
+        for(var year = start ; year <=end; year++){
+            options += "<option>"+ year +"</option>";
+        }
+        document.getElementById("year").innerHTML = options;
+    }
+
+</script>
+
+
+</html>

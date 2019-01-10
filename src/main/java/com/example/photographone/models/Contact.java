@@ -1,6 +1,7 @@
 package com.example.photographone.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "contact")
@@ -8,6 +9,7 @@ public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
+    @Size(min = 3, max = 25, message = "довжина неправильна")
     private String email;
     private long number;
     private String facebook;
