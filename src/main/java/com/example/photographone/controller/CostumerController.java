@@ -6,6 +6,7 @@ import com.example.photographone.models.Search;
 import com.example.photographone.models.User;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -40,10 +41,14 @@ public class CostumerController {
         return "costumerProfile";
 
     }
-    @GetMapping ("/selectPhotograph")
-    public @ResponseBody List<User> select (@RequestBody Search search){
+    @RequestMapping ( value = "/selectPhotograph",  produces="text/plain")
+    public  List<User> select (
+            @RequestParam String city,
+            @RequestParam int priceHigher,
+            @RequestParam int priceLower
+    ){
         System.out.println("________________________________");
-        List<User> photographs= userService.selectPhotographs(search.getCity(),search.getPriceLower(),search.getPriceHigher());
+        List<User> photographs = userService.selectPhotographs(city,priceHigher,priceLower);
 
         return  photographs;
     }
