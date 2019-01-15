@@ -22,6 +22,8 @@ public class Photograph  extends UserDepended{
     @OneToOne(optional = false)
     private  Rating rating;
     private String description;
+    private String email;
+    private String activationCode;
 
 
     //GettersAndSetters
@@ -100,6 +102,21 @@ public class Photograph  extends UserDepended{
     }
 
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
     //EqualsAndHashcode
     @Override
     public boolean equals(Object o) {
