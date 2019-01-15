@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+
 public class Photograph  extends UserDepended{
     @Id
     @OneToOne(optional = false)
@@ -74,7 +75,7 @@ public class Photograph  extends UserDepended{
     }
 
     public void setSale(int sale) {
-        sale = sale;
+        this.sale = sale;
     }
 
     public List<Gallery> getGalleries() {
