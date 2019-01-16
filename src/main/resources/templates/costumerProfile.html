@@ -130,7 +130,7 @@
                function (response) {
                     console.log(response)
                    for (const singleUser of response) {
-                       let present = $('div/', {
+                       let present = $('<div/>', {
                            text: singleUser.username
                        });
                        $("#showPhotograph").append(present)

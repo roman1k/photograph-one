@@ -17,8 +17,8 @@ public class User  implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
-    @OneToOne(optional = false)
-    private UserDepended userDep ;
+    @OneToOne
+    private UserDepended userDep = new UserDepended();
 
 //    @Column(unique = true)
     private String username;

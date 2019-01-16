@@ -1,5 +1,7 @@
 package com.example.photographone.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +10,8 @@ import java.util.List;
 @Table(name = "Costumer")
 public class Costumer extends UserDepended {
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
-    private UserDepended userDepended;
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    int id;
     @OneToMany
     private List<UserDepended> selected = new ArrayList<>();
 
@@ -18,13 +19,6 @@ public class Costumer extends UserDepended {
     public Costumer() {
     }
     //getter and setter
-    public UserDepended getUserDepended() {
-        return userDepended;
-    }
-
-    public void setUserDepended(UserDepended userDepended) {
-        this.userDepended = userDepended;
-    }
 
     public List<UserDepended> getSelected() {
         return selected;
@@ -37,7 +31,7 @@ public class Costumer extends UserDepended {
     @Override
     public String toString() {
         return "Costumer{" +
-                "name" + getFirstName()+
+                "name" + id +
                 '}';
     }
 }
