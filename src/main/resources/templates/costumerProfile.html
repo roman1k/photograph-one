@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <html lang="en">
 <head>
+    <csrf disabled="true"/>
     <meta charset="UTF-8">
     <title>photographProfile</title>
     <!-- Latest compiled and minified CSS -->
@@ -12,6 +13,12 @@
     <link rel="stylesheet" href="../css/photographProfile.css">
 
     <!-- Latest compiled and minified JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- Подлючаем библиотеку jQuery -->
+    <script src="/assets/demo/jquery/jquery-1.11.2.min.js"></script>
+    <!-- Подлючаем js файл Bootstrap -->
+    <script src="/assets/demo/bootstrap-3/js/bootstrap.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
@@ -83,24 +90,16 @@
 <div class="showcase-user  showcase-sm, col-md-offset-3 ">
     <div class="container col-md-12">
         <div class="search-box">
-            <form id="f1">
+            <div id="f1">
             <div   class="form-inline">
 
-                <div class="form-group">
-                    <div class="small">Місто</div>
-                    <input type="" name="city" >
+                <div class="form-group" >
+                    <div class="small">Name</div>
+                    <input type="" id="name" style="color: black">
                 </div>
-                <div class="form-group">
-                    <div class="small">Ціна</div>
-                    <input type="" name="priceHigher">
-                </div>
-                <div class="form-group">
-                    <div class="small">Ціна</div>
-                    <input type="" name="priceLower" >
-                </div>
-                <input type="submit" id="selectPhotograph" class="btn-search btn btn-default btn-lg" style="margin-left: 15px">Пошук</input>
+                <button type="submit" id="selectPhotograph" class="btn-search btn btn-default btn-lg" style="margin-left: 15px">Пошук</button>
             </div>
-            </form>
+            </div>
         </div>
     </div>
 
@@ -116,18 +115,20 @@
 
 <script>
     $("#selectPhotograph").click(function (event) {
-        event.preventDefault();
+        let nameCity = $("name").val();
 
        $.ajax({
-           url: "/user/selectPhotograph",
-           data: new FormData($("f1")[0]),
-           enctype: "multipart/form-data",
-           processData: false,
-           cache:false,
+
+           url: "/selectPhotograph/",
+           type: 'POST',
+           contentType: 'application/json',
+           data: JSON.stringify(nameCity),
+           dataType: 'json',
+           cache: false,
+           timeout: 600000,
            success:
                function (response) {
-
-                   console.log(response);
+                    console.log(response)
                    for (const singleUser of response) {
                        let present = $('div/', {
                            text: singleUser.username

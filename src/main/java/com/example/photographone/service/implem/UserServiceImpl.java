@@ -79,4 +79,10 @@ public class UserServiceImpl implements UserService {
         return photographs;
 
     }
+
+    @Override
+    public List<User> allUser() {
+
+        return userDAO.findAll();
+    }
 }

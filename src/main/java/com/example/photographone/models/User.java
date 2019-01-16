@@ -18,7 +18,7 @@ public class User  implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private int id;
     @OneToOne(optional = false)
-    private UserDepended userDep = new UserDepended();
+    private UserDepended userDep ;
 
 //    @Column(unique = true)
     private String username;
@@ -37,6 +37,10 @@ public class User  implements UserDetails {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(String username) {
+        this.username = username;
     }
 
     public UserDepended getUserDep() {

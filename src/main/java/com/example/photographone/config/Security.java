@@ -25,12 +25,13 @@ public class Security  extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/saveUser", "/choice/", "/images/**", "/css/**", "/registration", "/newPhotograph","/newUser","/adminn","/saveCity","/allCities","/addAdmin")
+
+                .antMatchers("/","/saveUser", "/choice/", "/images/**", "/css/**", "/registration", "/newPhotograph","/newUser","/adminn","/saveCity","/allCities","/addAdmin" )
                 .permitAll()
                 .antMatchers("/admin/**", "/admin").hasRole("ADMIN")
-                .anyRequest().authenticated()
-                .and()
+                .anyRequest().authenticated().and()
                 .formLogin()
                 .loginPage("/login")
                 .successForwardUrl("/successURL")

@@ -10,4 +10,5 @@ public interface UserService extends UserDetailsService {
     void savePhotograph(User user, Contact contact);
     void saveUser(User user, Contact contact);
     List<User> selectPhotographs(String city, int priceLower, int priceHigher);
+    List<User> allUser();
 }
