@@ -124,10 +124,10 @@ public class Photograph  extends UserDepended{
 
     public Photograph( String avatar, int age, Sex sex, Contact contact, int sale, List<Gallery> galleries, Rating rating, String description) {
         this.avatar = avatar;
-        age = age;
+        this.age = age;
         this.sex = sex;
         this.contact = contact;
-        sale = sale;
+        this.sale = sale;
         this.galleries = galleries;
         this.rating = rating;
         this.description = description;
