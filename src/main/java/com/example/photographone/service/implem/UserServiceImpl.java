@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -74,9 +75,36 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> selectPhotographs(String city, int priceLower, int priceHigher) {
-        List<User>  photographs = userDAO.findAll();
-        return photographs;
+    public List<User> selectPhotographs(Search search) {
+        List<User>  photographs  = userDAO.findAll().stream()
+                                            .filter(user -> user.getUserDep()instanceof Photograph)
+                                            .collect(Collectors.toList());
+        System.out.println(search + "__________111111111111111111111111");
+        if (search.getCity()!=null) {
+            System.out.println("+++++++++++++++++++++++++++++++++");
+            String city = search.getCity();
+            photographs = photographs.stream()
+                                .filter(user -> (user.getUserDep().getContact().getCity().getNameCity()).equals(city))
+                                .collect(Collectors.toList());
+        }
+        if (search.getPriceLower()!=0){
+            System.out.println("+++++++++++++++++++++++++++++++++1111");
+            int priceLower = search.getPriceLower();
+            photographs = photographs.stream()
+                            .filter(user -> (user.getUserDep()instanceof Photograph))
+                            .filter(user -> ((Photograph) user.getUserDep()).getSale()>priceLower)
+                            .collect(Collectors.toList());
+        }
+       if (search.getPriceHigher()!=0) {
+           System.out.println("+++++++++++++++++++++++++++++++++2222");
+
+           int priceHigher = search.getPriceHigher();
+           photographs = photographs.stream()
+                   .filter(user -> (user.getUserDep() instanceof Photograph))
+                   .filter(user -> ((Photograph) user.getUserDep()).getSale() < priceHigher)
+                   .collect(Collectors.toList());
+       }
+       return photographs;
 
     }
 

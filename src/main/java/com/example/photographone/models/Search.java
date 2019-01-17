@@ -1,12 +1,25 @@
 package com.example.photographone.models;
 
 public class Search {
-    private String city;
-    private int priceLower;
-    private  int priceHigher;
+    private String city ;
+    private int priceLower ;
+    private  int priceHigher ;
 
     public Search(String city, int priceLower, int priceHigher) {
         this.city = city;
+        this.priceLower = priceLower;
+        this.priceHigher = priceHigher;
+    }
+
+    public Search() {
+    }
+
+    public Search(String city, int priceHigher) {
+        this.city = city;
+        this.priceHigher = priceHigher;
+    }
+
+    public Search(int priceLower, int priceHigher) {
         this.priceLower = priceLower;
         this.priceHigher = priceHigher;
     }
@@ -38,7 +51,7 @@ public class Search {
     @Override
     public String toString() {
         return "Search{" +
-                "city='" + city + '\'' +
+                "city=" + city  +
                 ", priceLower=" + priceLower +
                 ", priceHigher=" + priceHigher +
                 '}';

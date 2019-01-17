@@ -94,47 +94,58 @@
             <div   class="form-inline">
 
                 <div class="form-group" >
-                    <div class="small">Name</div>
-                    <input type="" id="name" style="color: black">
+                    <div class="small">City</div>
+                    <input type="" id="city" style="color: black">
+                </div>
+                <div class="form-group" >
+                    <div class="small">priceLower</div>
+                    <input type="" id="priceLower" style="color: black">
+                </div>
+                <div class="form-group" >
+                    <div class="small">priceHigher</div>
+                    <input type="" id="priceHigher" style="color: black">
                 </div>
                 <button type="submit" id="selectPhotograph" class="btn-search btn btn-default btn-lg" style="margin-left: 15px">Пошук</button>
             </div>
             </div>
         </div>
     </div>
-
 </div>
 
 <div id="showPhotograph"> </div>
+
 <footer>
+    <div>
     <p><button>Новини</button></p>
     <p><button>Чат</button></p>
     <button>Про сайт</button>
     <button>Інформація про розробників</button>
+    </div>
 </footer>
 
 <script>
     $("#selectPhotograph").click(function (event) {
-        let nameCity = $("name").val();
+        let city = $("#city").val();
+        let priceLower = $("#priceLower").val();
+        let priceHigher = $("#priceHigher").val();
 
        $.ajax({
 
            url: "/selectPhotograph/",
            type: 'POST',
            contentType: 'application/json',
-           data: JSON.stringify(nameCity),
+           data: JSON.stringify(city,priceLower,priceHigher),
            dataType: 'json',
            cache: false,
            timeout: 600000,
            success:
                function (response) {
-                    console.log(response)
+               console.log(response)
                    for (const singleUser of response) {
                        let present = $('<div/>', {
                            text: singleUser.username
                        });
                        $("#showPhotograph").append(present)
-
                    }
               },
            error: function (err) {

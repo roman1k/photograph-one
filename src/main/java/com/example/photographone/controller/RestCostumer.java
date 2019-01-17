@@ -5,10 +5,8 @@ import com.example.photographone.DAO.CityDAO;
 import com.example.photographone.DAO.ContactDAO;
 import com.example.photographone.DAO.UserDAO;
 import com.example.photographone.DAO.UserDependedDAO;
-import com.example.photographone.models.City;
-import com.example.photographone.models.Contact;
-import com.example.photographone.models.User;
-import com.example.photographone.models.UserDepended;
+import com.example.photographone.models.*;
+import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,26 +19,17 @@ import java.util.List;
 public class RestCostumer {
 
     @Autowired
-    UserDependedDAO userDependedDAO;
-
-    @Autowired
-    public CityDAO cityDAO;
-
-    @Autowired
-    public UserDAO userDAO;
-
-    @Autowired
-    public ContactDAO contactDAO;
+    private UserService userService;
 
     @RequestMapping(value = "/selectPhotograph/")
     public @ResponseBody
-    List<User> select(City city
-    ) {
-        System.out.println("________________________________");
+    List<User> select(Search search
+                      ) {
+        System.out.println("________________________________" + search);
 
-        List<User> cities = userDAO.findAll();
+        List<User> response = userService.selectPhotographs(search);
 
-        return cities;
+        return response;
 
 
     }
