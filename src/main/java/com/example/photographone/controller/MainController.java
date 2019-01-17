@@ -3,13 +3,11 @@ package com.example.photographone.controller;
 import com.example.photographone.DAO.ContactDAO;
 import com.example.photographone.DAO.CostumerDAO;
 import com.example.photographone.DAO.UserDAO;
-import com.example.photographone.models.Contact;
-import com.example.photographone.models.Costumer;
-import com.example.photographone.models.Role;
-import com.example.photographone.models.User;
+import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import com.example.photographone.service.implem.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,17 +30,21 @@ public class MainController {
         return "redirect:/";
     }
 
-    @PostMapping ("/newUser")
+    @PostMapping("/newUser")
     public String newUser(User user, Contact contact){
         userService.saveUser(user,contact);
         return "redirect:/";
     }
 
     @PostMapping("/successURL")
-    private  String saveUser() {
-        System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
-        return "redirect:/photographProfile";
-    }
+    private  String saveUser(@AuthenticationPrincipal User user) {
+        if (user.getUserDep() instanceof Photograph){
+        return "redirect:/photograph/MyPage";}
+        else  if (user.getUserDep() instanceof Costumer) {
+            return "redirect:/user/MyPage";
+        } else
+            return "redirect:/admin/" + user.getUsername();
+        }
 
 
     @GetMapping("/activate/{code}")
@@ -53,10 +55,7 @@ public class MainController {
         if (isActivated){
             model.addAttribute("message", "Photograph successfully activated");
 
-        }
-        else {
-            model.addAttribute("message", "Activation code not found!");
-        }
+    }
 
         return "next";
 
@@ -64,4 +63,4 @@ public class MainController {
 
 
 
-}
+

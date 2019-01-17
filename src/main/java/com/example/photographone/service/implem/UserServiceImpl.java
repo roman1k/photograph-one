@@ -6,17 +6,15 @@ import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.security.core.userdetails.UserDetails;
-        import org.springframework.security.core.userdetails.UserDetailsService;
-        import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.StringUtils;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     @Autowired
     private UserDAO userDAO;
 
@@ -34,8 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Autowired
-    MailSender mailSender;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -44,38 +40,23 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void savePhotograph(User user, Contact contact) {
-        contactDAO.save(contact);
-        Photograph photograph = new Photograph();
-        photograph.setContact(contact);
-
-        photograph.setActivationCode(UUID.randomUUID().toString());
-
-
-        Rating rating = new Rating();
-        ratingDAO.save(rating);
-        photograph.setRating(rating);
-        photographDAO.save(photograph);
-
-
-
-        String message = String.format(
-                "Hello, %s! \n"+
-                "You are welcome! Please, visit this link : http://localhost:8080/activate/%s",
-                photograph.getFirstName(),
-                photograph.getActivationCode()
-        );
-        if (!StringUtils.isEmpty(photograph.getEmail())){
-            mailSender.send(photograph.getEmail(),"Activation code", message);
-
-
-
+        if(userDAO.findByUsername(user.getUsername())==null){
+            contactDAO.save(contact);
+            Photograph photograph = new Photograph();
+            photograph.setContact(contact);
+            Rating rating = new Rating();
+            ratingDAO.save(rating);
+            photograph.setRating(rating);
+            photographDAO.save(photograph);
+            user.setUserDep(photograph);
+            String encode = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encode);
+            System.out.println("2________________________________");
+            user.setRole(Role.ROLE_PHOTOGRAPH);
+            userDAO.save(user);
         }
-        user.setUserDep(photograph);
-        String encode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
-        System.out.println("2________________________________");
-        user.setRole(Role.ROLE_PHOTOGRAPH);
-        userDAO.save(user);
+        else System.out.println("____________________________________________");
+
     }
 
     @Override
@@ -93,13 +74,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean activatePhotographer(String code) {
-       Photograph photograph =  photographDAO.findByActivationCode(code);
-       if (photograph == null){
-           return false;
-       }
-       photograph.setActivationCode(null);
-       photographDAO.save(photograph);
-    return true;
+    public List<User> selectPhotographs(String city, int priceLower, int priceHigher) {
+        List<User>  photographs = userDAO.findAll();
+        return photographs;
+
     }
 }

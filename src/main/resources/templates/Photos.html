@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Photos</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../static/css/photographProfile.css">
+</head>
+<style>
+    .photo{
+        background: red;
+        float: left;
+        margin-left: 20px;
+        margin-top: 5%;
+        height:200px;
+        width: 200px;
+        text-align: center;
+
+    }
+    .addPhoto{
+        background: blueviolet;
+        float: left;
+        margin-left: 20px;
+        margin-top: 5%;
+        height:200px;
+        width: 200px;
+        text-align: center;
+        color: red;
+
+    }
+    #main{
+        color: black;
+        text-align: center;
+    }
+</style>
+<body>
+<h1 id="main">Фото</h1>
+<a href="Photos.html"><div class="photo">Photo1</div></a>
+<a href="Photos.html"><div class="photo">Photo2</div></a>
+<a href="Photos.html"><div class="photo">Photo3</div></a>
+<a href="Photos.html"><div class="photo">Photo4</div></a>
+<a href="Photos.html"><div class="photo">Photo5</div></a>
+<a href="Photos.html"><div class="photo">Photo6</div></a>
+<a href="Photos.html"><div class="photo">Photo7</div></a>
+<a th:action=@"/addPhoto"><div class="addPhoto">AddPhoto</div></a>
+
+</body>
+</html>

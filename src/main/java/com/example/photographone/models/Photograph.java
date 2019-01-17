@@ -1,5 +1,7 @@
 package com.example.photographone.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +11,8 @@ import java.util.Objects;
 
 public class Photograph  extends UserDepended{
     @Id
-    @OneToOne(optional = false)
-    @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
-    private UserDepended userDepended;
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
+    int id;
     private  String avatar;
     private int age;
     private Sex sex;
@@ -28,13 +29,6 @@ public class Photograph  extends UserDepended{
 
 
     //GettersAndSetters
-    public UserDepended getUserDepended() {
-        return userDepended;
-    }
-
-    public void setUserDepended(UserDepended userDepended) {
-        this.userDepended = userDepended;
-    }
 
     public String getAvatar() {
         return avatar;
@@ -126,7 +120,7 @@ public class Photograph  extends UserDepended{
         Photograph that = (Photograph) o;
         return age == that.age &&
                 sale == that.sale &&
-                Objects.equals(userDepended, that.userDepended) &&
+
                 Objects.equals(avatar, that.avatar) &&
                 sex == that.sex &&
                 Objects.equals(contact, that.contact) &&
@@ -137,7 +131,7 @@ public class Photograph  extends UserDepended{
 
     @Override
     public int hashCode() {
-        return Objects.hash(userDepended, avatar, age, sex, contact, sale, galleries, rating, description);
+        return Objects.hash( avatar, age, sex, contact, sale, galleries, rating, description);
     }
 
 
@@ -145,13 +139,12 @@ public class Photograph  extends UserDepended{
     public Photograph() {
     }
 
-    public Photograph(UserDepended userDepended, String avatar, int age, Sex sex, Contact contact, int sale, List<Gallery> galleries, Rating rating, String description) {
-        this.userDepended = userDepended;
+    public Photograph( String avatar, int age, Sex sex, Contact contact, int sale, List<Gallery> galleries, Rating rating, String description) {
         this.avatar = avatar;
-        age = age;
+        this.age = age;
         this.sex = sex;
         this.contact = contact;
-        sale = sale;
+        this.sale = sale;
         this.galleries = galleries;
         this.rating = rating;
         this.description = description;
@@ -162,7 +155,6 @@ public class Photograph  extends UserDepended{
     @Override
     public String toString() {
         return "Photograph{" +
-                "userDepended=" + userDepended +
                 ", avatar='" + avatar + '\'' +
                 ", Age=" + age +
                 ", sex=" + sex +
