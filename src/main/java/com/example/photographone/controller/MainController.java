@@ -4,13 +4,11 @@ import com.example.photographone.DAO.ContactDAO;
 import com.example.photographone.DAO.CostumerDAO;
 import com.example.photographone.DAO.UserDAO;
 import com.example.photographone.components.UserValidator;
-import com.example.photographone.models.Contact;
-import com.example.photographone.models.Costumer;
-import com.example.photographone.models.Role;
-import com.example.photographone.models.User;
+import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import com.example.photographone.service.implem.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,12 +69,12 @@ public class MainController {
     }
 
     @PostMapping("/successURL")
-    private  String saveUser() {
-        System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
-        return "redirect:/photographProfile";
-    }
-
-
-
-
-}
+    private  String transition(@AuthenticationPrincipal User user) {
+        if (user.getUserDep()instanceof Photograph){
+        return "redirect:/photographProfile";}
+        else if (user.getUserDep()instanceof Costumer && user.getRole()==Role.ROLE_COSTUMER){
+            return "costomer";
+        }
+        else {
+            return "adminn";
+        }}}
