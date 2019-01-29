@@ -22,30 +22,30 @@ public class PhotographServiceImpl implements PhotographService {
         photographDAO.save(photograph);
     }
 
-    @Override
-    public Photograph getPhotograph(String avatar, String firstName, String lastName,
-                             int Age, Sex sex, String description,
-                             String email, long number, String facebook,
-                             String instagram, String city,int Sale,
-                             String nameGallery, String photos,  Photograph photograph){
-        photograph.getUserDepended().setFirstName(firstName);
-        photograph.getUserDepended().setLastName(lastName);
-        City city1 = new City();
-        city1.setNameCity(city);
-        Contact contact = new Contact(email,number, facebook, instagram, city1);
-        contactDAO.save(contact);
-        photograph.getUserDepended().setContact(contact);
-        photograph.setAge(Age);
-        photograph.setDescription(description);
-        photograph.setSale(Sale);
-        photograph.setAvatar(avatar);
-        List<Photo> photos1 = new ArrayList<Photo>();
-        String[] arrOfStr = photos.split(" ");
-        List<Gallery> galleries = new ArrayList<>();
-        Gallery gallery = new Gallery(nameGallery, photograph, photos1);
-        galleries.add(gallery);
-        photograph.setGalleries(galleries);
-        photograph.setAge(Age);
-        return photograph;
-    }
+//    @Override
+//    public Photograph getPhotograph(String avatar, String firstName, String lastName,
+//                             int Age, Sex sex, String description,
+//                             String email, long number, String facebook,
+//                             String instagram, String city,int Sale,
+//                             String nameGallery, String photos,  Photograph photograph){
+//        photograph.getUserDepended().setFirstName(firstName);
+//        photograph.getUserDepended().setLastName(lastName);
+//        City city1 = new City();
+//        city1.setNameCity(city);
+//        Contact contact = new Contact(email,number, facebook, instagram, city1);
+//        contactDAO.save(contact);
+//        photograph.getUserDepended().setContact(contact);
+//        photograph.setAge(Age);
+//        photograph.setDescription(description);
+//        photograph.setSale(Sale);
+//        photograph.setAvatar(avatar);
+//        List<Photo> photos1 = new ArrayList<Photo>();
+//        String[] arrOfStr = photos.split(" ");
+//        List<Gallery> galleries = new ArrayList<>();
+//        Gallery gallery = new Gallery(nameGallery, photograph, photos1);
+//        galleries.add(gallery);
+//        photograph.setGalleries(galleries);
+//        photograph.setAge(Age);
+//        return photograph;
+//    }
 }

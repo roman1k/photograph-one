@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService {
             int priceLower = search.getPriceLower();
             photographs = photographs.stream()
                             .filter(user -> (user.getUserDep()instanceof Photograph))
-                            .filter(user -> ((Photograph) user.getUserDep()).getSale()>priceLower)
+                            .filter(user -> ((Photograph) user.getUserDep()).getPrice()>priceLower)
                             .collect(Collectors.toList());
         }
        if (search.getPriceHigher()!=0) {
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService {
            int priceHigher = search.getPriceHigher();
            photographs = photographs.stream()
                    .filter(user -> (user.getUserDep() instanceof Photograph))
-                   .filter(user -> ((Photograph) user.getUserDep()).getSale() < priceHigher)
+                   .filter(user -> ((Photograph) user.getUserDep()).getPrice() < priceHigher)
                    .collect(Collectors.toList());
        }
        return photographs;

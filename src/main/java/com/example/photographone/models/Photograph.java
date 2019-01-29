@@ -18,7 +18,7 @@ public class Photograph  extends UserDepended{
     private Sex sex ;
     @OneToOne(optional = false)
     private Contact contact;
-    private int sale;
+    private int price;
     @OneToMany
     private List<Gallery> galleries = new ArrayList<>();
     @OneToOne(optional = false)
@@ -62,12 +62,12 @@ public class Photograph  extends UserDepended{
         this.contact = contact;
     }
 
-    public int getSale() {
-        return sale;
+    public int getPrice() {
+        return price;
     }
 
-    public void setSale(int sale) {
-        this.sale = sale;
+    public void setPrice(int sale) {
+        this.price = sale;
     }
 
     public List<Gallery> getGalleries() {
@@ -102,7 +102,7 @@ public class Photograph  extends UserDepended{
         if (o == null || getClass() != o.getClass()) return false;
         Photograph that = (Photograph) o;
         return age == that.age &&
-                sale == that.sale &&
+                price == that.price &&
 
                 Objects.equals(avatar, that.avatar) &&
                 sex == that.sex &&
@@ -114,7 +114,7 @@ public class Photograph  extends UserDepended{
 
     @Override
     public int hashCode() {
-        return Objects.hash( avatar, age, sex, contact, sale, galleries, rating, description);
+        return Objects.hash( avatar, age, sex, contact, price, galleries, rating, description);
     }
 
 
@@ -127,7 +127,7 @@ public class Photograph  extends UserDepended{
         this.age = age;
         this.sex = sex;
         this.contact = contact;
-        this.sale = sale;
+        this.price = sale;
         this.galleries = galleries;
         this.rating = rating;
         this.description = description;
@@ -142,7 +142,7 @@ public class Photograph  extends UserDepended{
                 ", Age=" + age +
                 ", sex=" + sex +
                 ", contact=" + contact +
-                ", Sale=" + sale +
+                ", price=" + price +
                 ", galleries=" + galleries +
                 ", rating=" + rating +
                 ", description='" + description + '\'' +
