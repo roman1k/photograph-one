@@ -6,13 +6,10 @@ import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+        import org.springframework.security.core.userdetails.UserDetailsService;
+        import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -73,6 +70,24 @@ public class UserServiceImpl implements UserService {
         user.setRole(Role.ROLE_COSTUMER);
         userDAO.save(user);
     }
+
+    @Override
+    public void saveAdmin(User user, Contact contact) {
+        contactDAO.save(contact);
+        Costumer costumer = new Costumer();
+        costumer.setContact(contact);
+        costumerDAO.save(costumer);
+        user.setUserDep(costumer);
+        String encode = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encode);
+        System.out.println("2________________________________");
+        user.setRole(Role.ROLE_ADMIN);
+        userDAO.save(user);
+    }
+
+
+    }
+
 
     @Override
     public List<User> selectPhotographs(Search search) {

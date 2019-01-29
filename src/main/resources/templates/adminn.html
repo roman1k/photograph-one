@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Admin</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -11,53 +12,104 @@
 <body>
 <div class="head">
     <h1 >Вітаємо адмін</h1>
-</div>
-<div>
-    <h2>Пошук юзера</h2>
-    <form action="/userFound">
-        <input name="username" placeholder="Введіть імя юзера ">
-        <input type="submit" value="шукати" >
-        <ul>
-            <a th:object="${o}">
-                <a th:text="${o}">
-                </a>
-            </a>
-        </ul>
-    </form>
-</div>
-<div>
-    <form action="/saveCity" method="post">
-        <input name="nameCity" placeholder="Введіть нове місто">
-        <input type="submit" value="добавити місто">
-    </form>
-
+<!--add City AJAX-->
+    <input type="" id="nameCity">
+    <button id="saveCity">save City</button>
 </div>
 
+    <div>
+        <button id = "allCities">all Cities</button>
+        <div id="representer1"></div>
+    </div>
+</body>
+
 <div>
-    <form th:action="@{/allCities}">
-        <input type="submit" value="Переглянути всі міста">
-        <ul>
-            <li th:each="cities : ${cities}">
-                <h2 th:text="${cities.getNameCity()}"> </h2>
-            </li>
-        </ul>
-    </form>
-</div>
-<div>
-    <form th:action="@{/saveCity}" method="post">
-        <input name="nameCity" placeholder="Введіть нове місто">
-        <input type="submit" value="добавити місто">
-    </form>
+
+    <input id="username" placeholder="username">
+    <input id="password" placeholder="password">
+    <button id="saveAdmin"> save Admin</button>
 
 </div>
-
-                    <!--//створити нового адміна(логін, пароль,пошта)-->
 <div>
-    <form th:action="@{/addAdmin}" method="post">
-        <input name="loginAdmin" placeholder="логін">
-        <input name="passwordAdmin" placeholder="пароль">
-        <input name="emailAdmin" placeholder="пошта">
-        <input type="submit" value="добавити адміна">
-    </form>
-
+    <input id="username" placeholder="username">
+    <button id="findUser">find user</button>
+    <div id="representer3"></div>
 </div>
+
+    <script>
+        $("#saveCity").click(function () {
+            let nameCity = $("#nameCity").val();
+            $("#representer").empty();
+            $.ajax({
+                url:'saveCity',
+                type:'POST',
+                contentType:'application/json',
+                data:JSON.stringify({nameCity}),
+                success:function (response) {
+                    console.log(response);
+                },
+                error:function (err) {
+                    console.log(err);
+                }})})
+
+        $("#allCities").click(function () {
+            $("#representer1").empty();
+            $.ajax({
+                url:'allCities',
+                type:'GET',
+                success:function (response) {
+                    console.log(response);
+                    for (const singleCity of response){
+                        let $divv = $('<div/>',{
+                            text: singleCity.id + ' ' +singleCity.nameCity
+
+                        });
+                        $("#representer1").append($divv);
+                    }
+                },
+                error:function (err) {
+                    console.log(err);
+                }})})
+
+
+
+        $("#saveAdmin").click(function () {
+            let username = $("#username").val();
+            let password = $("#password").val();
+
+
+            $("#representer2").empty();
+            $.ajax({
+                url:'saveAdmin',
+                type:'POST',
+                contentType:'application/json',
+                data:JSON.stringify({username,password}),
+                success:function (response) {
+                    console.log(response);
+                },
+                error:function (err) {
+                    console.log(err);
+                }})})
+
+        $("#findUser").click(function () {
+            let username1 = $("#username").val();
+            $("#representer3").empty();
+            $.ajax({
+                url:'findUser',
+                type:'GET',
+                success:function (response) {
+                    console.log(response);
+                    for (const singleUser of response){
+                        let $divvv = $('<div/>',{
+                            text: singleUser.id + ' ' +singleUser.username+ ' ' +singleUser.role
+
+                        });
+                        $("#representer3").append($divvv);
+                    }
+                },
+                error:function (err) {
+                    console.log(err);
+                }})})
+
+
+    </script>
