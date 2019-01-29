@@ -11,7 +11,7 @@ public class Photograph  extends UserDepended{
     @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
-    private UserDepended userDepended;
+    private int id;
     private  String avatar;
     private int age;
     private Sex sex;
@@ -26,13 +26,7 @@ public class Photograph  extends UserDepended{
 
 
     //GettersAndSetters
-    public UserDepended getUserDepended() {
-        return userDepended;
-    }
 
-    public void setUserDepended(UserDepended userDepended) {
-        this.userDepended = userDepended;
-    }
 
     public String getAvatar() {
         return avatar;
@@ -109,7 +103,7 @@ public class Photograph  extends UserDepended{
         Photograph that = (Photograph) o;
         return age == that.age &&
                 sale == that.sale &&
-                Objects.equals(userDepended, that.userDepended) &&
+
                 Objects.equals(avatar, that.avatar) &&
                 sex == that.sex &&
                 Objects.equals(contact, that.contact) &&
@@ -120,7 +114,7 @@ public class Photograph  extends UserDepended{
 
     @Override
     public int hashCode() {
-        return Objects.hash(userDepended, avatar, age, sex, contact, sale, galleries, rating, description);
+        return Objects.hash( avatar, age, sex, contact, sale, galleries, rating, description);
     }
 
 
@@ -129,7 +123,6 @@ public class Photograph  extends UserDepended{
     }
 
     public Photograph(UserDepended userDepended, String avatar, int age, Sex sex, Contact contact, int sale, List<Gallery> galleries, Rating rating, String description) {
-        this.userDepended = userDepended;
         this.avatar = avatar;
         age = age;
         this.sex = sex;
@@ -145,7 +138,7 @@ public class Photograph  extends UserDepended{
     @Override
     public String toString() {
         return "Photograph{" +
-                "userDepended=" + userDepended +
+
                 ", avatar='" + avatar + '\'' +
                 ", Age=" + age +
                 ", sex=" + sex +

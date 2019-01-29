@@ -10,7 +10,7 @@ public class Costumer extends UserDepended {
     @Id
     @OneToOne(optional = false)
     @JoinColumn(name = "id", unique = true, nullable = false, updatable = false)
-    private UserDepended userDepended;
+    private int id;
     @OneToMany
     private List<UserDepended> selected = new ArrayList<>();
 
@@ -18,13 +18,7 @@ public class Costumer extends UserDepended {
     public Costumer() {
     }
     //getter and setter
-    public UserDepended getUserDepended() {
-        return userDepended;
-    }
 
-    public void setUserDepended(UserDepended userDepended) {
-        this.userDepended = userDepended;
-    }
 
     public List<UserDepended> getSelected() {
         return selected;
