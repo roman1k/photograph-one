@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../static/saveFPH.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+
+
+<form th:action="@{/saveFirstPhotographer1}" id="regOFphotograph" method="post"  enctype="multipart/form-data">
+    <div class="container, col-md-12">
+        <div class="row">
+            <div >
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#" style="background: grey" ><img src="../images/logo-inverse-5.png"></a>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="pole"><a href="#">Чат</a></li>
+                                <li class="pole"><a href="#">Галереї</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle, pole" data-toggle="dropdown">Топ <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Топ фотографів</a></li>
+                                        <li><a href="#">Топ фотографій</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right" style="margin-right: 60px">
+                                <button type="button" class="btn btn-default btn-lg, pole">Мій профіль</button>
+                                <button type="button" class="btn btn-default btn-lg, pole" style="margin-left: 30px">Вийти</button>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row m-l-80 m-r-80">
+            <div class="col-md-3 ">
+                <div >
+                    <!--<img src="../images/photo_1.jpg">-->
+                    <img src="../images/photo_1.jpg" class="avatar ">
+                    <input class = "simple-form" type = "file" name = "avatar" placeholder="додати фото">
+                </div>
+                <div class = "simple-form">
+                    <input type="text" name="firstName" placeholder="ім'я">
+                </div>
+                <div class = "simple-form">
+                    <input type="text" name="lastName" placeholder="прізвище">
+                </div>
+
+                <div >
+                    <select  class = "simple-form-drop" name="sage">
+                        <option name="sage"  value="1">Male</option>
+                        <option name="sage"  value="2">Female</option>
+                        <option name="sage"  value="3">Anyone</option>
+                    </select>
+                </div>
+                <div >
+                    <select class = "simple-form-drop"id="year" name ="Age" placeholder="18">
+
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-9 p-l-150">
+
+                <div class = "simple-form">
+                    <textarea type="text" name="description" placeholder="розкажіть про себе"></textarea>
+                </div>
+
+                <div class = "simple-form">
+
+                    <input type="text" name="email" placeholder="email">
+                </div>
+                <div class = "simple-form">
+
+                    <input type="number" name="number1" placeholder="phone">
+                </div>
+                <div class = "simple-form">
+
+                    <input type="text" name="facebook" placeholder="facebook">
+                </div>
+                <div class = "simple-form">
+
+                    <input type="text" name="instagram" placeholder="instagram">
+                </div>
+                <div class = "simple-form">
+
+                    <input type="text" name="city" placeholder="city">
+                </div>
+                <div class = "simple-form">
+
+                    <input type="number" name="Sale" placeholder="ціна"></div>
+                <div class = "simple-form">
+                    <h4>Створити галерею</h4>
+                    <input type="text" name="nameGallery" placeholder="Назва галереї">
+                </div>
+                <div class="p-top-10">
+                    <input class = "simple-form" type="file" name="photos" placeholder="add photos" multiple />
+                </div>
+                <div class="p-top-10">
+                    <input class="btn btn-success" type="submit">
+                </div>
+                    <!--Gallary-->
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+</body>
+<script>
+    function getYear() {
+        var start = 18;
+        var end = 120;
+        var options = "";
+        for(var year = start ; year <=end; year++){
+            options += "<option>"+ year +"</option>";
+        }
+        document.getElementById("year").innerHTML = options;
+    }
+
+    getYear()
+</script>
+
+
+</html>

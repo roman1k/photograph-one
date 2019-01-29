@@ -15,7 +15,7 @@ public class Photograph  extends UserDepended{
     int id;
     private  String avatar;
     private int age;
-    private Sex sex;
+    private Sex sex ;
     @OneToOne(optional = false)
     private Contact contact;
     private int sale;

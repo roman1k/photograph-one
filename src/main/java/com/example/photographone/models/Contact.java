@@ -18,8 +18,10 @@ public class Contact {
     private  City city;
 
     //constuctors
-    public Contact() {
+    public Contact(String email, long number, String facebook, String instagram, City city) {
     }
+    public Contact(){}
+
 
     public Contact(String email) {
         this.email = email;

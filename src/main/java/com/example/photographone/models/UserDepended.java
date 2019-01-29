@@ -10,7 +10,7 @@ public  class UserDepended {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String firstName;
+    private String firstName = "kol";
     private String lastName;
     @OneToOne(optional = false)
     private Contact contact;
@@ -19,6 +19,11 @@ public  class UserDepended {
     public UserDepended() {
     }
     //getter and setter
+
+    public int getId() {
+        return id;
+    }
+
     public String getFirstName() {
         return firstName;
     }
