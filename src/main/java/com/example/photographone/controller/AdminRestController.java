@@ -6,11 +6,15 @@ import com.example.photographone.DAO.UserDAO;
 import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @RestController
 public class AdminRestController {
@@ -46,9 +50,9 @@ public class AdminRestController {
     }
 
     @GetMapping("/findUser")
-    public UserDetails user(@RequestParam String username) {
-        UserDetails byUsername = userDAO.findByUsername(username);
+    public List<User> users() {
+        System.out.println("1");
+        return userService.allUsers();
 
-        return byUsername;
     }
 }

@@ -31,9 +31,8 @@
 
 </div>
 <div>
-    <input id="username" placeholder="username">
     <button id="findUser">find user</button>
-    <div id="representer3"></div>
+    <div id="representerUser"></div>
 </div>
 
     <script>
@@ -91,25 +90,23 @@
                     console.log(err);
                 }})})
 
+
         $("#findUser").click(function () {
-            let username1 = $("#username").val();
-            $("#representer3").empty();
+            $("#representerUser").empty();
             $.ajax({
-                url:'findUser',
+                url:'/findUser',
                 type:'GET',
                 success:function (response) {
                     console.log(response);
                     for (const singleUser of response){
-                        let $divvv = $('<div/>',{
-                            text: singleUser.id + ' ' +singleUser.username+ ' ' +singleUser.role
-
+                        let $div2 = $('<div/>',{
+                            text: singleUser.id + ' ' +singleUser.username
                         });
-                        $("#representer3").append($divvv);
+                        $("#representerUser").append($div2);
                     }
                 },
                 error:function (err) {
                     console.log(err);
                 }})})
-
 
     </script>
