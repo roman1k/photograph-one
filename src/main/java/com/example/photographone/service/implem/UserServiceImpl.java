@@ -70,4 +70,20 @@ public class UserServiceImpl implements UserService {
         user.setRole(Role.ROLE_COSTUMER);
         userDAO.save(user);
     }
-}
+
+    @Override
+    public void saveAdmin(User user, Contact contact) {
+        contactDAO.save(contact);
+        Costumer costumer = new Costumer();
+        costumer.setContact(contact);
+        costumerDAO.save(costumer);
+        user.setUserDep(costumer);
+        String encode = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encode);
+        System.out.println("2________________________________");
+        user.setRole(Role.ROLE_ADMIN);
+        userDAO.save(user);
+    }
+
+
+    }

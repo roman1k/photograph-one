@@ -7,4 +7,5 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public interface UserService extends UserDetailsService {
     void savePhotograph(User user, Contact contact);
     void saveUser(User user, Contact contact);
+    void saveAdmin(User user, Contact contact);
 }

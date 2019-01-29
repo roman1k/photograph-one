@@ -1,10 +1,12 @@
 package com.example.photographone.controller;
 
 import com.example.photographone.DAO.CityDAO;
+import com.example.photographone.DAO.CostumerDAO;
 import com.example.photographone.DAO.UserDAO;
 import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +21,7 @@ public class AdminRestController {
     @Autowired
     UserDAO userDAO;
     @Autowired
-    PasswordEncoder passwordEncoder;
+    CostumerDAO costumerDAO;
 
     @RequestMapping(value = "/saveCity")
     public List<City> saveCity(@RequestBody City city) {
@@ -33,14 +35,20 @@ public class AdminRestController {
     }
 
     @RequestMapping(value = "/saveAdmin")
-    public List<User> saveAdmin(@RequestBody User user) {
-        user.setUserDep(new UserDepended());
+    public String saveAdmin(@RequestBody User user) {
+        System.out.println("1");
         user.setRole(Role.ROLE_ADMIN);
-        String encode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
-        System.out.println("2________________________________");
-        userDAO.save(user);
-userDAO.save(user);
-return userDAO.findAll();
+        userService.saveAdmin(user,new Contact());
+
+        System.out.println("2");
+        return "adminn";
+
+    }
+
+    @GetMapping("/findUser")
+    public UserDetails user(@RequestParam String username) {
+        UserDetails byUsername = userDAO.findByUsername(username);
+
+        return byUsername;
     }
 }
