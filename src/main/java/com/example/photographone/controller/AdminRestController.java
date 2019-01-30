@@ -50,9 +50,11 @@ public class AdminRestController {
     }
 
     @GetMapping("/findUser")
-    public List<User> users() {
-        System.out.println("1");
-        return userService.allUsers();
+    public List<User> user() {
+     return userDAO.findAll();
+
 
     }
+
+
 }

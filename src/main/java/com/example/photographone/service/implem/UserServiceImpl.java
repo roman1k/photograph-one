@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -86,11 +87,5 @@ public class UserServiceImpl implements UserService {
         user.setRole(Role.ROLE_ADMIN);
         userDAO.save(user);
     }
-
-    @Override
-    public List<User> allUsers() {
-        return userDAO.findAll();
-    }
-
 
 }

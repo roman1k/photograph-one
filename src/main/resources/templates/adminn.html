@@ -31,7 +31,9 @@
 
 </div>
 <div>
+    <input id="username1" placeholder="username">
     <button id="findUser">find user</button>
+
     <div id="representerUser"></div>
 </div>
 
@@ -92,19 +94,23 @@
 
 
         $("#findUser").click(function () {
+            let username1 =$("#username1").val();
             $("#representerUser").empty();
             $.ajax({
                 url:'/findUser',
                 type:'GET',
                 success:function (response) {
                     console.log(response);
-                    for (const singleUser of response){
-                        let $div2 = $('<div/>',{
-                            text: singleUser.id + ' ' +singleUser.username
-                        });
-                        $("#representerUser").append($div2);
-                    }
-                },
+                    for (const singleUser of response) {
+                        if (singleUser.username == username1) {
+                            let $div2 = $('<a/>',
+                                {
+                                    text: singleUser.username,
+                                    href: "http://localhost:8080/photographProfile/" + singleUser.username
+                                });
+                            $("#representerUser").append("<div/>").append($div2);
+                        }
+                    }},
                 error:function (err) {
                     console.log(err);
                 }})})
