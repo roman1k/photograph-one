@@ -10,8 +10,8 @@ public  class UserDepended {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String firstName = "kol";
-    private String lastName;
+    private String firstName = "Дані не внесені";
+    private String lastName= "Дані не внесені";
     @OneToOne(optional = false)
     private Contact contact;
 

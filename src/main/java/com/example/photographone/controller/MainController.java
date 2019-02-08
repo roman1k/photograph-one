@@ -40,10 +40,10 @@ public class MainController {
     @PostMapping("/successURL")
     private String saveUser(@AuthenticationPrincipal User user, Model model) {
         if (user.getUserDep() instanceof Photograph) {
-            model.addAttribute("photograph", user);
+
             return "redirect:/photograph/MyPage";
         } else if (user.getUserDep() instanceof Costumer) {
-            model.addAttribute("costumer", user);
+
             return "redirect:/user/MyPage";
         } else
             return "redirect:/admin/" + user.getUsername();

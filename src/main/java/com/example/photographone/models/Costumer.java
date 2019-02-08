@@ -13,18 +13,18 @@ public class Costumer extends UserDepended {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     int id;
     @OneToMany
-    private List<UserDepended> selected = new ArrayList<>();
+    private List<User> selected = new ArrayList<>();
 
     //constructor
     public Costumer() {
     }
     //getter and setter
 
-    public List<UserDepended> getSelected() {
+    public List<User> getSelected() {
         return selected;
     }
 
-    public void setSelected(List<UserDepended> selected) {
+    public void setSelected(List<User> selected) {
         this.selected = selected;
     }
 

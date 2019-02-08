@@ -14,7 +14,7 @@ public class Photograph  extends UserDepended{
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     int id;
     private  String avatar;
-    private int age;
+    private int age ;
     private Sex sex ;
     @OneToOne(optional = false)
     private Contact contact;
@@ -23,7 +23,7 @@ public class Photograph  extends UserDepended{
     private List<Gallery> galleries = new ArrayList<>();
     @OneToOne(optional = false)
     private  Rating rating;
-    private String description;
+    private String description = "Дані не внесені";
 
 
     //GettersAndSetters

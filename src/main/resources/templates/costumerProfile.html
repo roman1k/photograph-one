@@ -68,17 +68,19 @@
     <div class="row" >
         <div class="col-md-4">
             <div class="col-md-12, f_size, p" ><img src="../images/photograph.png " class="f_size"></div>
-            <p class="m-30, pole"> [[${costumer.username}]]</p>
 
-            <p class="m-30, pole">[[${Number}]]</p>
-            <p class="m-30, pole">[[${Mail}]]</p>
+            <p class="m-30, pole">   </p>
+            <p class="m-30, pole">   </p>
+
+
 
         </div>
         <div class="col-md-8">
             <div class="p">
                 <div class="col-md-6">
-                    <p class="m-30, pole">Name</p>
-                    <p class="m-30, pole">Surname</p>
+                    <p class="m-30, pole">Name [[${costumer.userDep.firstName}]]</p>
+
+                    <p class="m-30, pole">Surname  [[${costumer.userDep.lastName}]]</p>
                     <p class="m-30, pole">Sex</p>
 
                 </div>
@@ -113,7 +115,7 @@
     </div>
 </div>
 
-<div id="showPhotograph"> </div>
+<div id="showPhotograph"></div>
 
 <footer>
     <div>
@@ -126,6 +128,7 @@
 
 <script>
     $("#selectPhotograph").click(function (event) {
+        $("#showPhotograph").empty();
         let city = $("#city").val();
         let priceLower = $("#priceLower").val();
         let priceHigher = $("#priceHigher").val();
@@ -143,11 +146,13 @@
                function (response) {
                console.log(response)
                    for (const singleUser of response) {
-                       let present = $('<div/>', {
-                           text: singleUser.username
-                       });
-                       $("#showPhotograph").append(present)
-                   }
+                       let present = $('<a>', {
+                           text:   singleUser.username,
+                           href: "http://localhost:8080/user/" + singleUser.username});
+                       
+                       $("#showPhotograph").
+                       append(pre)
+                    }
               },
            error: function (err) {
                console.log(err)

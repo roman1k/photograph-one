@@ -1,9 +1,6 @@
 package com.example.photographone.controller;
 
-import com.example.photographone.models.Costumer;
-import com.example.photographone.models.Photograph;
-import com.example.photographone.models.Search;
-import com.example.photographone.models.User;
+import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -23,7 +20,11 @@ public class CostumerController {
 
 
     @GetMapping("/MyPage")
-       public String myPage(@AuthenticationPrincipal User user){
+       public String myPage(@AuthenticationPrincipal User user, Model model){
+        Costumer userDep = (Costumer) user.getUserDep();
+        Contact contact = userDep.getContact();
+        model.addAttribute("costumer", user);
+
 
            return "costumerProfile";
 
@@ -35,7 +36,6 @@ public class CostumerController {
         User user = (User) userService.loadUserByUsername(username);
         Costumer costumer = (Costumer)user.getUserDep();
         model.addAttribute("user", user);
-        model.addAttribute("photograph", costumer);
         System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
         return "costumerProfile";
 
