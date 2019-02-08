@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
     void saveAdmin(User user, Contact contact);
     void savePhotograph(User user, Contact contact);
-    boolean saveUser(User user, Contact contact);
+    void saveUser(User user, Contact contact);
     List<User> selectPhotographs(Search search);
 
     //boolean activatePhotographer(String code);

@@ -29,7 +29,8 @@ public class User  implements UserDetails {
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked =true;
     private boolean isCredentialsNonExpired = true;
-    private boolean isEnabled = true;
+    private boolean isEnabled = false;
+    private String activationCode;
 
 
 
@@ -47,6 +48,14 @@ public class User  implements UserDetails {
 
     public User(String username) {
         this.username = username;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 
     public UserDepended getUserDep() {
