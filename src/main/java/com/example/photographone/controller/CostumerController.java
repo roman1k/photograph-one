@@ -14,6 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user/")
+@PreAuthorize("hasAuthority('COSTUMER')")
 public class CostumerController {
     @Autowired
     private UserService userService;
@@ -40,5 +41,13 @@ public class CostumerController {
         return "costumerProfile";
 
     }
+   /* @RequestMapping ( value = "/selectPhotograph",  produces="text/plain")
+    public  List<User> select (
 
+    ){
+        System.out.println("________________________________");
+        List<User> photographs = userService.selectPhotographs( search);
+
+        return  photographs;
+    }*/
 }

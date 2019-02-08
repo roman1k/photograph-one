@@ -6,16 +6,19 @@ import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.security.core.userdetails.UserDetails;
-        import org.springframework.security.core.userdetails.UserDetailsService;
-        import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    MailSender mailSender;
     @Autowired
     private UserDAO userDAO;
 
@@ -53,8 +56,12 @@ public class UserServiceImpl implements UserService {
             String encode = passwordEncoder.encode(user.getPassword());
             user.setPassword(encode);
             System.out.println("2________________________________");
+            photograph.setActive(true);
             user.setRole(Role.ROLE_PHOTOGRAPH);
+            photograph.setActivationCode(UUID.randomUUID().toString());
+            photographDAO.save(photograph);
             userDAO.save(user);
+
         }
         else System.out.println("____________________________________________");
 
@@ -118,7 +125,7 @@ public class UserServiceImpl implements UserService {
            int priceHigher = search.getPriceHigher();
            photographs = photographs.stream()
                    .filter(user -> (user.getUserDep() instanceof Photograph))
-                   .filter(user -> ((Photograph) user.getUserDep()).getPrice() < priceHigher)
+                   .filter(user -> ((Photograph) user.getUserDep()).getSale() < priceHigher)
                    .collect(Collectors.toList());
        }
        return photographs;
