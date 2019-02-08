@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr>
+<H1>Реєстрація </H1>
+<form th:action="@{/saveUser}" method="post">
+    <input type="" name="username" placeholder="">
+    <input type="password" name="password" placeholder="">
+    <input type ="email"  name = "email" placeholder="">
+    <input type = "submit" value="go!">
+</form>
+${message?ifExists}
+&lt;!&ndash;<form th:action="@{/login}" method="post">&ndash;&gt;
+    &lt;!&ndash;<input type="" name="username" placeholder="">&ndash;&gt;
+    &lt;!&ndash;<input type="password" name="password" placeholder="">&ndash;&gt;
+    &lt;!&ndash;<input type = "submit" value="go!">&ndash;&gt;
+&lt;!&ndash;</form>&ndash;&gt;
+
+</body>
+</html>

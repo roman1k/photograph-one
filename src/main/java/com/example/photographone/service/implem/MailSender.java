@@ -14,49 +14,9 @@ import java.io.InputStream;
 @Service
 public class MailSender {
 
-    private JavaMailSender mailSender = new JavaMailSender() {
-        @Override
-        public MimeMessage createMimeMessage() {
-            return null;
-        }
+    @Autowired
+    JavaMailSender mailSender;
 
-        @Override
-        public MimeMessage createMimeMessage(InputStream inputStream) throws MailException {
-            return null;
-        }
-
-        @Override
-        public void send(MimeMessage mimeMessage) throws MailException {
-
-        }
-
-        @Override
-        public void send(MimeMessage... mimeMessages) throws MailException {
-
-        }
-
-        @Override
-        public void send(MimeMessagePreparator mimeMessagePreparator) throws MailException {
-
-        }
-
-        @Override
-        public void send(MimeMessagePreparator... mimeMessagePreparators) throws MailException {
-
-        }
-
-        @Override
-        public void send(SimpleMailMessage simpleMailMessage) throws MailException {
-
-        }
-
-        @Override
-        public void send(SimpleMailMessage... simpleMailMessages) throws MailException {
-
-        }
-
-
-    };
     @Value("${spring.mail.username}")
     private String  username;
 

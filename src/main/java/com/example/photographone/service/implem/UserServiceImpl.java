@@ -5,16 +5,19 @@ import com.example.photographone.DAO.*;
 import com.example.photographone.models.*;
 import com.example.photographone.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @Autowired
+    MailSender mailSender;
     @Autowired
     private UserDAO userDAO;
 
@@ -32,6 +35,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -52,31 +56,81 @@ public class UserServiceImpl implements UserService {
             String encode = passwordEncoder.encode(user.getPassword());
             user.setPassword(encode);
             System.out.println("2________________________________");
+            photograph.setActive(true);
             user.setRole(Role.ROLE_PHOTOGRAPH);
+            photograph.setActivationCode(UUID.randomUUID().toString());
+            photographDAO.save(photograph);
             userDAO.save(user);
+
         }
         else System.out.println("____________________________________________");
 
     }
 
+   /* public boolean addUser(User user) {
+            User userFromDb = userDAO.findByUsername(user.getUsername());
+
+            if (userFromDb != null) {
+                return false;
+            }
+
+            user.setActive(true);
+
+            user.setActivationCode(UUID.randomUUID().toString());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            user.setRole(Role.ROLE_COSTUMER);
+
+            userDAO.save(user);
+
+            sendMessage(user);
+
+            return true;
+    }*/
     @Override
-    public void saveUser(User user, Contact contact) {
-        contactDAO.save(contact);
-        Costumer costumer = new Costumer();
-        costumer.setContact(contact);
-        costumerDAO.save(costumer);
-        user.setUserDep(costumer);
-        String encode = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encode);
-        System.out.println("2________________________________");
-        user.setRole(Role.ROLE_COSTUMER);
-        userDAO.save(user);
-    }
+    public boolean saveUser(User user, Contact contact) {
+
+            User userFromDb = userDAO.findByUsername(user.getUsername());
+
+            if (userFromDb != null) {
+                return false;
+            }
+
+            user.setActive(true);
+            user.setRole(Role.ROLE_COSTUMER);
+            user.setActivationCode(UUID.randomUUID().toString());
+
+            userDAO.save(user);
+
+            if (!StringUtils.isEmpty(user.getEmail())) {
+                String message = String.format(
+                        "Hello, %s! \n" +
+                                "Welcome to Sweater. Please, visit next link: http://localhost:8080/activate/%s",
+                        user.getUsername(),
+                        user.getActivationCode()
+                );
+
+                mailSender.send(user.getEmail(), "Activation code", message);
+            }
+
+            return true;
+        }
 
     @Override
-    public List<User> selectPhotographs(String city, int priceLower, int priceHigher) {
-        List<User>  photographs = userDAO.findAll();
-        return photographs;
-
+    public List<User> selectPhotographs(Search search) {
+        return null;
     }
+
+    public boolean activateUser(String code) {
+            User user = userDAO.findByActivationCode(code);
+
+            if (user == null) {
+                return false;
+            }
+
+            user.setActivationCode(null);
+
+            userDAO.save(user);
+
+            return true;
+        }
 }

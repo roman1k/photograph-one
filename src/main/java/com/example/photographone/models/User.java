@@ -24,6 +24,11 @@ public class User  implements UserDetails {
 //    @Column(unique = true)
     private String username;
     private String password;
+    private String email;
+    private boolean active;
+
+    private String activationCode;
+
     @Enumerated(EnumType.STRING)
     private Role role;
     private boolean isAccountNonExpired = true;
@@ -32,12 +37,40 @@ public class User  implements UserDetails {
     private boolean isEnabled = true;
 
 
+
     public User() {
     }
 
-    public User(String username, String password) {
+    public User(String username, String password, String email, String activationCode, boolean active) {
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.activationCode = activationCode;
+        this.active = active;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 
     public User(String username) {

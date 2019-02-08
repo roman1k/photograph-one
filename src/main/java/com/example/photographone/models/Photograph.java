@@ -26,9 +26,18 @@ public class Photograph  extends UserDepended{
     private String description;
     private String email;
     private String activationCode;
+    private  boolean active;
 
 
     //GettersAndSetters
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 
     public String getAvatar() {
         return avatar;

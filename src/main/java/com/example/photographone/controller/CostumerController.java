@@ -41,15 +41,13 @@ public class CostumerController {
         return "costumerProfile";
 
     }
-    @RequestMapping ( value = "/selectPhotograph",  produces="text/plain")
+   /* @RequestMapping ( value = "/selectPhotograph",  produces="text/plain")
     public  List<User> select (
-            @RequestParam String city,
-            @RequestParam int priceHigher,
-            @RequestParam int priceLower
+
     ){
         System.out.println("________________________________");
-        List<User> photographs = userService.selectPhotographs(city,priceHigher,priceLower);
+        List<User> photographs = userService.selectPhotographs( search);
 
         return  photographs;
-    }
+    }*/
 }

@@ -1,10 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 3 - Создание адаптивной галереи изображений на Gridify</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <style>
+        img {
+            padding: 4px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        img:hover {
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
+    <h1 class="h3 text-center">Bootstrap 3 - Создание адаптивной галереи изображений на Gridify</h1>
+    <div class="grid">
+        <div class="grid-item">
+            <a data-fancybox="gallery" href="/static/images/05_kiev.jpg">
+                <img class="img-responsive" src="/static/images/05_kiev.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a data-fancybox="gallery" href="/static/images/07.jpg">
+                <img class="img-responsive" src="/static/images/07.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a data-fancybox="gallery" href="/static/images/people.jpg">
+                <img class="img-responsive" src="/static/images/people.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a data-fancybox="gallery" href="/static/images/007-3.jpg">
+                <img class="img-responsive" src="/static/images/007-3.jpg" alt="">
+            </a>
+        </div>
+        <div class="grid-item">
+            <a data-fancybox="gallery" href="/static/images/1416694.jpg">
+                <img class="img-responsive" src="/static/images/1416694.jpg" alt="">
+            </a>
+        </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script>
+
+<!-- fancyBox JS -->
+<script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
+<!-- Gridify -->
+<script src="/examples/vendors/gridify/gridify.js"></script>
+<script>
+    $(function () {
+        var options =
+            {
+                srcNode: 'img',             // grid items (class, node)
+                margin: '15px',             // margin in pixel, default: 0px
+                width: '240px',             // grid item width in pixel, default: 220px
+                max_width: '',              // dynamic gird item width if specified, (pixel)
+                resizable: true,            // re-layout if window resize
+                transition: 'all 0.5s ease' // support transition for CSS3, default: all 0.5s ease
+            };
+        $('.grid').gridify(options);
+    });
+</script>
 
 </body>
 </html>
