@@ -23,6 +23,29 @@
     <script src="/assets/demo/jquery/jquery-1.11.2.min.js"></script>
     <!-- Подлючаем js файл Bootstrap -->
     <script src="/assets/demo/bootstrap-3/js/bootstrap.min.js"></script>
+
+
+    <style>
+        .suces-ok::after{
+            border-color: green;
+            color: green;
+        }
+        .suces-remove::after {
+            content: "Данi_не_коректнi";
+            border-color: red;
+            color: red;
+        }
+        .form-control-feedbacks{
+            padding: 0;
+            margin: 0;
+            width: 150px;
+            height: 12px;
+
+        }
+
+
+    </style>
+
 </head>
 <body>
 <div class="modal fade bs-example-modal-sm-photograph" id="myModal" tabindex="-1" role="dialog">
@@ -36,17 +59,17 @@
             <!-- Основная часть модального окна, содержащая форму для регистрации -->
             <div class="modal-body">
                 <!-- Форма для регистрации -->
-                <form role="form" class="form-horizontal" >
+                <form role="form" class="form-horizontal"  th:action="@{/}" method="post">
                     <!-- Блок для ввода логина -->
                     <div class="form-group has-feedback">
                         <label class="control-label col-xs-3">Логін:</label>
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" class="form-control" required="required" name="username" pattern="[A-Za-z]{6,}">
-                                <span>[[${messageForLogin}]]</span>
+                                <input type="text" class="form-control" required="required" name="username" pattern="[A-Za-z]{3,}" placeholder="не менше 3-x символів">
                             </div>
-                            <span class="glyphicon form-control-feedback"></span>
+                            <span class="suuccess, form-control-feedbacks"></span>
+
                         </div>
                     </div>
                     <!-- Блок для введення паролю -->
@@ -55,9 +78,9 @@
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                <input type="text" class="form-control" required="required" name="password" pattern="[0-9]{5,10}">
+                                <input type="password" class="form-control" required="required" name="password" pattern="[0-9]{5,10}" placeholder="від 5 до 10 символів">
                             </div>
-                            <span class="glyphicon form-control-feedback"></span>
+                            <span class="suuccess form-control-feedbacks"></span>
                         </div>
                     </div>
                     <!-- Блок для ввода email -->
@@ -66,9 +89,9 @@
                         <div class="col-xs-6">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input type="email" class="form-control" required="required" name="email">
+                                <input type="email" class="form-control" required="required" name="email" placeholder="чинний email">
                             </div>
-                            <span class="glyphicon form-control-feedback"></span>
+                            <span class="suuccess form-control-feedbacks"></span>
                         </div>
                     </div>
                     <!-- Конец блока для ввода email-->
@@ -76,18 +99,15 @@
             </div>
             <!-- Нижняя часть модального окна -->
             <div class="modal-footer">
-                <button type="button"
-                        class="btn btn-default" data-dismiss="modal">Відміна</button>
-                <button id="save" type="button" class="btn btn-primary">Реєстрація</button>
+                <button type="button"nclass="btn btn-default" data-dismiss="modal">Відміна</button>
+                <button id="save" type="submit" class="btn btn-primary">Реєстрація</button>
             </div>
         </div>
     </div>
 </div>
-
-
 <script>
     $(function() {
-        //при нажатии на кнопку с id="save"
+        //при нажатии на кнопку с id="save"h
         $('#save').click(function() {
             //переменная formValid
             var formValid = true;
@@ -95,34 +115,53 @@
             $('input').each(function() {
                 //найти предков, которые имеют класс .form-group, для установления success/error
                 var formGroup = $(this).parents('.form-group');
-                    //найти glyphicon, который предназначен для показа иконки успеха или ошибки
-                    var glyphicon = formGroup.find('.form-control-feedback');
+                //найти glyphicon, который предназначен для показа иконки успеха или ошибки
+                var suuccess = formGroup.find('.form-control-feedbacks');
 
-                    //для валидации данных используем HTML5 функцию checkValidity
-                    if (this.checkValidity()) {
-                        //добавить к formGroup класс .has-success, удалить has-error
-                        formGroup.addClass('has-success').removeClass('has-error');
-                        //добавить к glyphicon класс glyphicon-ok, удалить glyphicon-remove
-                        glyphicon.addClass('glyphicon-ok').removeClass('glyphicon-remove');
-                    } else {
-                        //добавить к formGroup класс .has-error, удалить .has-success
-                        formGroup.addClass('has-error').removeClass('has-success');
-                        //добавить к glyphicon класс glyphicon-remove, удалить glyphicon-ok
-                        glyphicon.addClass('glyphicon-remove').removeClass('glyphicon-ok');
-                        //отметить форму как невалидную
-                        formValid = false;
+                //для валидации данных используем HTML5 функцию checkValidity
+                if (this.checkValidity()) {
+                    //добавить к formGroup класс .has-success, удалить has-error
+                    formGroup.addClass('has-success').removeClass('has-error');
+                    //добавить к glyphicon класс glyphicon-ok, удалить glyphicon-remove
+                    suuccess.addClass('suces-ok').removeClass('suces-remove');
+                } else {
+                    //добавить к formGroup класс .has-error, удалить .has-success
+                    formGroup.addClass('has-error').removeClass('has-success');
+                    //добавить к glyphicon класс glyphicon-remove, удалить glyphicon-ok
+                    suuccess.addClass('suces-remove').removeClass('suces-ok');
+                    //отметить форму как невалидную
+                    formValid = false;
                 }
             });
             //если форма валидна, то
             if (formValid) {
                 //сркыть модальное окно
-                $('#myModal').modal('hide');
+                // $('#myModal').modal('hide');
                 //отобразить сообщение об успехе
-                $('#success-alert').removeClass('hidden');
+                // $('#success-alert').removeClass('hidden');
+
+
+                let username = $("#username").val();
+                let password = $("#password").val();
+                let email = $("#email").val();
+                $.ajax({
+                    url: '/newPhotograph',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({username, password}, {email}),
+                    dataType: 'json',
+                    success: function (response) {
+                        console.log(response);
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                })
             }
         });
     });
 </script>
+
 <div class="modal fade bs-example-modal-sm-user" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -135,14 +174,17 @@
                     <div class="form-group">
                         <label>Логін</label>
                         <input type="text" class="form-control" name="username" placeholder="enter your login">
+                        <span></span>
                     </div>
                     <div class="form-group">
                         <label>Пароль</label>
                         <input type="password" class="form-control" name="password" placeholder="enter your password">
+                        <span></span>
                     </div>
                     <div class="form-group">
                         <label>Електронна пошта</label>
                         <input type="email" class="form-control" name="email" placeholder="enter your email">
+                        <span></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -152,6 +194,9 @@
         </div>
     </div>
 </div>
+<script>
+
+</script>
 
 <div id="left">
     <div >

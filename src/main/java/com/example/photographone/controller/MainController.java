@@ -13,32 +13,43 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URLEncoder;
+import java.util.List;
 
 @Controller
+@RestController
 public class MainController {
     @Autowired
     private UserService userService;
 
 
 
-    @GetMapping("/newPhotograph")
+
+
+    @RequestMapping("/newPhotograph")
     public String newPhotograph(User user, Contact contact){
-        userService.savePhotograph(user,contact);
+        List<User> all = userService.findAll();
+        for  (User user1:all) {
+            if (user1.getUsername().equals(user.getUsername())){
+                System.out.println("berfhrikgjrtekl");
+            }
+
+        }
+        userService.savePhotograph(user, contact);
         return "redirect:/";
     }
 
-    @GetMapping("/newUser")
+    @PostMapping("/newUser")
     public String newUser(User user, Contact contact){
         userService.saveUser(user,contact);
         return "redirect:/";
     }
 
     @PostMapping("/successURL")
-    private  String saveUser() {
+    private  String saveUser(@RequestBody User user,
+                             @RequestBody Contact contact) {
         System.out.println("YOU+++++++++++++++++++++++++++++++++++++++");
         return "redirect:/photographProfile";
     }

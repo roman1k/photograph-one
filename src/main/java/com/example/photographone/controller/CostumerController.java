@@ -40,11 +40,5 @@ public class CostumerController {
         return "costumerProfile";
 
     }
-    @GetMapping ("/selectPhotograph")
-    public @ResponseBody List<User> select (@RequestBody Search search){
-        System.out.println("________________________________");
-        List<User> photographs= userService.selectPhotographs(search.getCity(),search.getPriceLower(),search.getPriceHigher());
 
-        return  photographs;
-    }
 }

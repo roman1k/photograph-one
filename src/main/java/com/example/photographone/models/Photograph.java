@@ -68,12 +68,12 @@ public class Photograph  extends UserDepended{
         this.contact = contact;
     }
 
-    public int getSale() {
+    public int getPrice() {
         return price;
     }
 
-    public void setSale(int sale) {
-        this.sale = sale;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public List<Gallery> getGalleries() {

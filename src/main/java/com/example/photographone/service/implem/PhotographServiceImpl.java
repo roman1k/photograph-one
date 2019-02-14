@@ -18,7 +18,7 @@ public class PhotographServiceImpl implements PhotographService {
     private ContactDAO contactDAO;
 
     @Override
-    public void save(Photograph photograph) {
+    public void save(Photograph photograph, Contact contact) {
         photographDAO.save(photograph);
     }
 
@@ -26,7 +26,7 @@ public class PhotographServiceImpl implements PhotographService {
     public Photograph getPhotograph(String avatar, String firstName, String lastName,
                              int Age, Sex sex, String description,
                              String email, long number, String facebook,
-                             String instagram, String city,int Sale,
+                             String instagram, String city,int price,
                              String nameGallery, String photos,  Photograph photograph){
         photograph.getUserDepended().setFirstName(firstName);
         photograph.getUserDepended().setLastName(lastName);
@@ -37,7 +37,7 @@ public class PhotographServiceImpl implements PhotographService {
         photograph.getUserDepended().setContact(contact);
         photograph.setAge(Age);
         photograph.setDescription(description);
-        photograph.setSale(Sale);
+        photograph.setPrice(price);
         photograph.setAvatar(avatar);
         List<Photo> photos1 = new ArrayList<Photo>();
         String[] arrOfStr = photos.split(" ");

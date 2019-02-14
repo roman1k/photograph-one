@@ -18,7 +18,7 @@
 <body>
 
 
-<form id="regOFphotograph" method="post" action="/saveFirstPhotographer" >
+<form id="regOFphotograph" method="post" action="/saveFirstPhotographer">
     <div class="container">
         <div>
             <div class="col-md-3">
@@ -26,13 +26,13 @@
                 <div class="avatar ">
                     <!--<img src="../images/photo_1.jpg">-->
 
-                    <input type = "file" name = "avatar" placeholder="додати фото">
+                    <input type="file" name="avatar" placeholder="додати фото"></input>
                 </div>
                 <div>
-                    <input type="text" name="firstName" placeholder="ім'я">
+                    <input type="text" name="firstName" placeholder="ім'я"></input>
                 </div>
                 <div>
-                    <input type="text" name="lastName" placeholder="прізвище">
+                    <input type="text" name="lastName" placeholder="прізвище"></update>
                 </div>
 
                 <div>
@@ -43,7 +43,7 @@
                     </select>
                 </div>
                 <div>
-                    <select id="year" name ="Age" placeholder="18">
+                    <select id="year" name="Age" placeholder="18">
 
                     </select>
                 </div>
@@ -69,13 +69,14 @@
                 <div>
                     <input type="text" name="city" placeholder="city">
                 </div>
-                <div> <input type="number" name="Sale"></div>
+                <div><input type="number" name="Price"></div>
                 <div>
                     <input type="text" name="nameGallery" placeholder="gallaery">
-                    <input type="file" name="photos" placeholder="add photos" multiple />
+                    <input type="file" name="photos" placeholder="add photos" multiple/>
                     <input type="submit">
                     <!--Gallary-->
-                </div><button id="#btn">надіслати</button>
+                </div>
+                <button id="#btn">надіслати</button>
 
             </div>
 
@@ -90,8 +91,8 @@
         var start = 18;
         var end = 120;
         var options = "";
-        for(var year = start ; year <=end; year++){
-            options += "<option>"+ year +"</option>";
+        for (var year = start; year <= end; year++) {
+            options += "<option>" + year + "</option>";
         }
         document.getElementById("year").innerHTML = options;
     }

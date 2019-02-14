@@ -1,11 +1,41 @@
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>таблиця</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <!-- Подлючаем библиотеку jQuery -->
+    <script src="/assets/demo/jquery/jquery-1.11.2.min.js"></script>
+    <!-- Подлючаем js файл Bootstrap -->
+    <script src="/assets/demo/bootstrap-3/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-МИ на місці
-
+<form role="form">
+    <div class="form-group  col-md-7">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    </div>
+    <div class="form-group  col-md-7">
+        <label for="exampleInputPassword1">Пароль</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+    </div>
+    <div class="checkbox">
+        <label>   <input type="checkbox"> Проверить меня
+        </label>
+    </div>
+    <button type="submit" class="btn btn-default">Отправить</button>
+</form>
 </body>
-</html>

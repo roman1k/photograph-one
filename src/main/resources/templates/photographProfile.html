@@ -60,9 +60,10 @@
 <div class="container-fluid">
 <div class="row" >
     <div class="col-md-4">
-        <div class="col-md-12, f_size, p" ><img src="../static/images/photograph.png " class="f_size"></div>
+        <div class="col-md-12, f_size" ><img src="../static/images/photograph.png " class="f_size"></div>
+
+            <div><button class="btn btn-info btn-lg, butChan" >Змінити дані про себе</button></div>
         <p class="m-30, pole">[[${Number}]]</p>
-        <p class="m-30, pole">[[${Mail}]]</p>
         <p class="m-30, pole">[[${Prise}]]</p>
         <p class="m-30"><button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Facebook.png" height="40px" , width="100px"></button>
                         <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Instagram_icon.png" height="40px" , width="50px"></button></p>
@@ -71,7 +72,7 @@
     <div class="col-md-8">
         <div class="p">
              <div class="col-md-6">
-                 <p class="m-30, pole" >th:text="${user.firstName}"</p>
+                 <p class="m-30, pole" th:text="" >Name</p>
                  <p class="m-30, pole">Surname</p>
                  <p class="m-30, pole">Sex</p>
                  <p class="m-30, pole">Age</p>
@@ -80,69 +81,40 @@
         <div class="col-md-6"style="background: lightsteelblue">
             <p class="m-50, pole" style="background: lightsteelblue">Raiting</p>
             <div class="m-50">SetRaiting</div>
-
         </div>
     </div>
-
-    <div class="col-md-12, f_l" style="" >Gallery
-        <div class="wrapper " style="position: relative; margin-top: 43px;">
-            <ul class="forum-event-list ind "><li class="list-item" id="forum-topic-row-86972">
-                <div class="topic-flag-wrap col-md-12">
-                    <h2>
-                        <a class="link-def" href="/ru/forum/86972/">
-                            "Сладкий Октябрь" Саша и Вика                         </a>
-                    </h2>
-                </div>
-                <ul class="top-info"></ul>
-                <p>
-                    <span class="p">Фотография сделана с МК Т.Терлецкого и Т.Ковальчука.</span>                </p>    <div class="photos-list in-forum">
-                <ul>                <li class="default-photo mini, mini_f">
-                    <a href="/ru/forum/86972/">
-                        <img id="pict_i_2945311" alt="" src="https://lh3.googleusercontent.com/g9VtLwfT2l6YDNJIxMuZhoSfHbx972_NURs2QwKOdZWvJPeOr-kSPypILyptvXhP8qpxwwo1dsp65NyBDTa6s2-2=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                    </a>
-                </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945313" alt="" src="https://lh3.googleusercontent.com/DRXqFGVGqktLRF-DOnFVIy_Gy_KFj3fgmjsZg1KKeQbmun6j6CXucUm9ZwNjbbEXZEgqBkP04ndhB5Ob9qD1RizmNg=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945317" alt="" src="https://lh3.googleusercontent.com/NQ8iOMYtZNpbIuTiM3chiEDivFAdg4PsUhdg8YOVv9h6rV2m8I_Cn6yiEKb3ky1wIkWXoE6uYBemSuKJWUSy9HM=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945318" alt="" src="https://lh3.googleusercontent.com/_o7ew4HiQ1wzcYTAVRKwIthejiLGPl1va2Zxy8o4_YoWaVBepw5kFZr_GPGKF7DtybldMgO6066-G2GkWSq70v2EAA=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945321" alt="" src="https://lh3.googleusercontent.com/-ftq_TO40KnhjfGYajbdY5Ts9CsVYOBWadLo1wDhyErUEIU_mgjRxUP2040yqgzFOZTMhy6yS4vAT4gl8NzAZ_Fk=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945322" alt="" src="https://lh3.googleusercontent.com/IguCu9Nvi5TsPf5wKK8wbZEBq1F3nNdUXcizHYiqwIOEhMxKc1Fiyvmjm9FsdPWQMcPE2RzK_DXcZQCsntEs753QZg=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                    <li class="default-photo mini, mini_f">
-                        <a href="/ru/forum/86972/">
-                            <img id="pict_i_2945324" alt="" src="https://lh3.googleusercontent.com/2jAL5iulmgxRCL6-IX8DUwDeEThfphLdik5LCZfvUeot4ZWa6Vzgjx1z4H7G6Io5zU2n7IbG47by0MAh4W9KqilRdw=w82-h82-l90-c" style="width:82px; height:82px;" class="pic_i format-33">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            </li>
-            </ul>
-
-
-
-</div>
     </div>
 </div>
 </div>
-</div>
+        <div>
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="..." alt="...">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+                ...
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+        </div>
 <div class="container-fluid, footer" >
     <p></p><a href="">Правила сайту</a></p>
     <button type="button" class="btn btn-default" style="background: transparent"><img src="../static/images/Facebook.png" height="40px" , width="100px"></button>
