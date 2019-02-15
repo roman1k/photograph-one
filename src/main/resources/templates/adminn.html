@@ -143,13 +143,19 @@
 
         $("#deleteUser").click(function () {
             let username =$("#username2").val();
-
             $.ajax({
-                url: 'deleteUser',
-                type: 'POST',
-                contentType: 'application/json',
-                success: function (response) {
-                    console.log(response);
+                url:'deleteUser',
+                type:'POST',
+                 contentType:'application/json',
+                data:JSON.stringify({username}),
+                success:function (response) {
+                   for (const UserDelete of response){
+                       if (UserDelete.username==username){
+                           UserDelete.constructor;
+                           console.log(UserDelete);
+                   }
+                }
+
                     },
                 error:function (err) {
                     console.log('---');

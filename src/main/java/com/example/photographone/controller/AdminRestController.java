@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.jws.soap.SOAPBinding;
+import javax.xml.crypto.Data;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,11 +56,15 @@ public class AdminRestController {
      return userDAO.findAll();
     }
 
-    @RequestMapping(value = "/deleteUser")
-    public  String deleteUser (@RequestBody User user){
-        UserDetails byUsername = userDAO.findByUsername(user.getUsername());
-        System.out.println(byUsername);
-        return "adminn";
+    @PostMapping("/deleteUser")
+    public  List<User> deleteUser (@RequestBody User user){
+        List<User> all = userDAO.findAll();
+        for (User user1:all){
+            if (user1.getUsername().equals(user.getUsername())){
+                userDAO.delete(user1);
+            }
+        }
+        return userDAO.findAll();
     }
 
 }

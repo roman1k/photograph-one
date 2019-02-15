@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 public interface UserDAO extends JpaRepository<User, Integer> {
      UserDetails findByUsername(String username);
      User findByUserDep_Contact_Email(String email);
-
+     User deleteUserByUsername(String username);
 
 
 }
