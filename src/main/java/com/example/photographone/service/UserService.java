@@ -11,4 +11,5 @@ public interface UserService extends UserDetailsService {
     void savePhotograph(User user, Contact contact);
     void saveUser(User user, Contact contact);
     void saveAdmin(User user, Contact contact);
+    void deleteUser(User user);
 }

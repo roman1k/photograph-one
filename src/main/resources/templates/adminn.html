@@ -36,6 +36,13 @@
 
     <div id="representerUser"></div>
 </div>
+<div>
+    <input id="username2" placeholder="username">
+    <button id="deleteUser">delete user</button>
+</div>
+<div >
+
+</div>
 
     <script>
         $("#saveCity").click(function () {
@@ -114,5 +121,37 @@
                 error:function (err) {
                     console.log(err);
                 }})})
+        //
+        // $("#saveAdmin").click(function () {
+        //     let username = $("#username").val();
+        //     let password = $("#password").val();
+        //
+        //
+        //     $("#representer2").empty();
+        //     $.ajax({
+        //         url:'saveAdmin',
+        //         type:'POST',
+        //         contentType:'application/json',
+        //         data:JSON.stringify({username,password}),
+        //         success:function (response) {
+        //             console.log(response);
+        //         },
+        //         error:function (err) {
+        //             console.log(err);
+        //         }})})
 
+
+        $("#deleteUser").click(function () {
+            let username =$("#username2").val();
+
+            $.ajax({
+                url: 'deleteUser',
+                type: 'POST',
+                contentType: 'application/json',
+                success: function (response) {
+                    console.log(response);
+                    },
+                error:function (err) {
+                    console.log('---');
+                }})})
     </script>

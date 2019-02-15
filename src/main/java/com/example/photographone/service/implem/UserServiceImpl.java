@@ -88,4 +88,10 @@ public class UserServiceImpl implements UserService {
         userDAO.save(user);
     }
 
+    @Override
+    public void deleteUser(User user) {
+        userDAO.delete(user);
+    }
+
+
 }

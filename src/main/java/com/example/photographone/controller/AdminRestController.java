@@ -52,9 +52,13 @@ public class AdminRestController {
     @GetMapping("/findUser")
     public List<User> user() {
      return userDAO.findAll();
-
-
     }
 
+    @RequestMapping(value = "/deleteUser")
+    public  String deleteUser (@RequestBody User user){
+        UserDetails byUsername = userDAO.findByUsername(user.getUsername());
+        System.out.println(byUsername);
+        return "adminn";
+    }
 
 }
