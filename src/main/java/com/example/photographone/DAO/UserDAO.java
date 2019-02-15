@@ -9,6 +9,7 @@ public interface UserDAO extends JpaRepository<User, Integer> {
      User findByUsername(String username);
      User findByUserDep_Contact_Email(String email);
      User findByActivationCode(String code);
+     void deleteByUsername(String username);
 
 
 }

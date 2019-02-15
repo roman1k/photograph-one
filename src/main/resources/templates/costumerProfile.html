@@ -108,6 +108,15 @@
                     <div class="small">priceHigher</div>
                     <input type="" id="priceHigher" style="color: black">
                 </div>
+                <select name="choiceSort" >
+                    <option disabled value="DEFAUT"></option>
+                    <option  value="HIGHER_PRICE_CHOICE" >Найбільша ціна</option>
+                    <option  value="LOWER_PRICE_CHOICE" >Найменша ціна</option>
+                    <option  value="HIGHER_RATING_CHOICE"> Найменший рейтинг </option>
+                    <option  value="LOWER_RATING_CHOICE" >Найбільший рейтинг</option>
+                    <option>Сыроежкин</option>
+                    <option>Кукушкина</option>
+                </select>
                 <button type="submit" id="selectPhotograph" class="btn-search btn btn-default btn-lg" style="margin-left: 15px">Пошук</button>
             </div>
             </div>
@@ -132,13 +141,14 @@
         let city = $("#city").val();
         let priceLower = $("#priceLower").val();
         let priceHigher = $("#priceHigher").val();
+        let choiceSort = $("choiceSort").val();
 
        $.ajax({
 
            url: "/selectPhotograph/",
            type: 'POST',
            contentType: 'application/json',
-           data: JSON.stringify(city,priceLower,priceHigher),
+           data: JSON.stringify({city,priceLower,priceHigher, choiceSort}),
            dataType: 'json',
            cache: false,
            timeout: 600000,
@@ -146,12 +156,23 @@
                function (response) {
                console.log(response)
                    for (const singleUser of response) {
-                       let present = $('<a>', {
-                           text:   singleUser.username,
-                           href: "http://localhost:8080/user/" + singleUser.username});
-                       
-                       $("#showPhotograph").
-                       append(pre)
+                       let present = $('<div/>', {});
+                       let presentLink = $('<a/>', {
+                           href: "http://localhost:8080/user/" + singleUser.username,
+                       });
+                       let presentAva = $('<img>', {
+                           src: "../images/photograph.png",
+                           class: "f_size",
+                           text:   singleUser.username
+                        });
+                       let presentInfo = $('<div/>',{
+
+                            text:  singleUser.username + ", " + singleUser.userDep.contact.email
+                       });
+                       presentLink.append(presentAva);
+                       presentLink.append(presentInfo);
+                       present.append(presentLink);
+                       $("#showPhotograph").append(present);
                     }
               },
            error: function (err) {

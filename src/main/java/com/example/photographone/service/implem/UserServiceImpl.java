@@ -11,10 +11,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -146,10 +149,40 @@ public class UserServiceImpl implements UserService {
             return false;
         }
         user.setActivationCode(null);
-
+           user.setEnabled(true);
         userDAO.save(user);
 
         return true;
     }
+
+     public  Stream<User> sortUsers( Stream<User> users, SortedPhotographs sortedPhotographs){
+
+
+        if(sortedPhotographs ==SortedPhotographs.LOWER_PRICE_CHOICE){
+            users = users.
+                    filter(user -> user.getUserDep() instanceof Photograph).
+                    sorted(Comparator.comparing(user -> ((Photograph) user.getUserDep()).getPrice()));
+        }
+         if(sortedPhotographs ==SortedPhotographs.HIGHER_PRICE_CHOICE){
+             users = users.
+                     filter(user -> user.getUserDep() instanceof Photograph).
+                     sorted(Comparator.comparing(user -> ((Photograph) user.getUserDep()).getPrice()).reversed());
+         }
+         if(sortedPhotographs ==SortedPhotographs.LOWER_RATING_CHOICE){
+             users = users.
+                     filter(user -> user.getUserDep() instanceof Photograph).
+                     sorted(Comparator.comparingDouble(user -> ((Photograph) user.getUserDep()).getRating().getAverageMark()));
+
+         }
+         if(sortedPhotographs ==SortedPhotographs.HIGHER_RATING_CHOICE){
+             users = users.
+             filter(user -> user.getUserDep() instanceof Photograph).
+                     sorted(Comparator.comparingDouble(user -> (((Photograph) user.getUserDep()).getRating().getAverageMark())).reversed());
+         }
+
+        return users;
+     }
+
+
 
 }

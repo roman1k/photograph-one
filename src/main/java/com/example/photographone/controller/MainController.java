@@ -19,7 +19,7 @@ public class MainController {
     @PostMapping("/newPhotograph")
     public String newPhotograph(User user, Contact contact) {
         userService.savePhotograph(user, contact);
-        return "redirect:/login2";
+        return "redirect:/login";
     }
 
     @PostMapping("/newUser")
@@ -51,6 +51,7 @@ public class MainController {
 
         if (isActivated) {
             model.addAttribute("message", "Photograph successfully activated");
+
 
         }
         else{
